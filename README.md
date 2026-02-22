@@ -1,90 +1,65 @@
-# Welcome to GitHub
+<img width="1472" height="704" alt="Professional Header" src="https://github.com/user-attachments/assets/dd79b464-f7f9-48f1-af0e-3ff29a7e197b" />
 
-Welcome to GitHub—where millions of developers work together on software. Ready to get started? Let’s learn how this all works by building and publishing your first GitHub Pages website!
+# Hi there, I'm Sushrut Pakhale 👋 
 
-## Repositories
+### **Senior Associate Analyst @ National Grid | MSc Applied AI (Cranfield)**
 
-Right now, we’re in your first GitHub **repository**. A repository is like a folder or storage space for your project. Your project's repository contains all its files such as code, documentation, images, and more. It also tracks every change that you—or your collaborators—make to each file, so you can always go back to previous versions of your project if you make any mistakes.
+I am a **Lead-minded Software & Data Engineer** specialized in building reliable, scalable ML systems and production-grade pipelines. I bridge the gap between heavy-duty infrastructure and cutting-edge AI research—specifically in **Self-Supervised Learning (SSL)** and **Agentic Workflows**.
 
-This repository contains three important files: The HTML code for your first website on GitHub, the CSS stylesheet that decorates your website with colors and fonts, and the **README** file. It also contains an image folder, with one image file.
+---
 
-## Describe your project
+### 👨🏻‍💻 About Me
 
-You are currently viewing your project's **README** file. **_README_** files are like cover pages or elevator pitches for your project. They are written in plain text or [Markdown language](https://guides.github.com/features/mastering-markdown/), and usually include a paragraph describing the project, directions on how to use it, who authored it, and more.
+* ⚡ **Currently:** Optimizing DataOps and MLOps at National Grid to ensure 100% traceability and high system availability.
+* 🌱 **Learning:** Multi-agent orchestration with **LangGraph** and **CrewAI** for autonomous reasoning.
+* 🎓 **MSc Thesis:** Surpassed State-of-the-Art benchmarks on the FOD-A dataset using **BYOL (Bootstrap Your Own Latent)**.
+* 🚀 **Impact:** Reduced deployment cycle times by **35%** and automated manual effort by **100%** for Power BI pipelines at National Grid.
 
-[Learn more about READMEs](https://help.github.com/en/articles/about-readmes)
+---
 
-## Your first website
+### 🛠 Tech Stack & Specializations
+*While my Top Languages below update automatically, these are my core architectural specializations:*
 
-**GitHub Pages** is a free and easy way to create a website using the code that lives in your GitHub repositories. You can use GitHub Pages to build a portfolio of your work, create a personal website, or share a fun project that you coded with the world. GitHub Pages is automatically enabled in this repository, but when you create new repositories in the future, the steps to launch a GitHub Pages website will be slightly different.
+| Category | Tools & Technologies |
+| :--- | :--- |
+| **Programming** | ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat&logo=python&logoColor=white) ![C#](https://img.shields.io/badge/-C%23-239120?style=flat&logo=c-sharp&logoColor=white) ![Java](https://img.shields.io/badge/-Java-ED8B00?style=flat&logo=openjdk&logoColor=white) ![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black) |
+| **AI & Machine Learning** | ![PyTorch](https://img.shields.io/badge/-PyTorch-EE4C2C?style=flat&logo=pytorch&logoColor=white) ![Scikit-Learn](https://img.shields.io/badge/-Scikit--Learn-F7931E?style=flat&logo=scikit-learn&logoColor=white) ![MLflow](https://img.shields.io/badge/-MLflow-0194E2?style=flat&logo=mlflow&logoColor=white) ![GenAI](https://img.shields.io/badge/-GenAI-FFD21E?style=flat&logo=huggingface&logoColor=black) ![SageMaker](https://img.shields.io/badge/-AWS%20SageMaker-FF9900?style=flat&logo=amazon-sagemaker&logoColor=white) |
+| **Data Engineering** | ![Databricks](https://img.shields.io/badge/-Databricks-FF3621?style=flat&logo=databricks&logoColor=white) ![Snowflake](https://img.shields.io/badge/-Snowflake-29B5E8?style=flat&logo=snowflake&logoColor=white) ![PostgreSQL](https://img.shields.io/badge/-PostgreSQL-336791?style=flat&logo=postgresql&logoColor=white) ![Azure](https://img.shields.io/badge/-Azure%20Functions-0089D6?style=flat&logo=microsoft-azure&logoColor=white) |
+| **DevOps & MLOps** | ![Docker](https://img.shields.io/badge/-Docker-2496ED?style=flat&logo=docker&logoColor=white) ![Kubernetes](https://img.shields.io/badge/-Kubernetes-326CE5?style=flat&logo=kubernetes&logoColor=white) ![Terraform](https://img.shields.io/badge/-Terraform-7B42BC?style=flat&logo=terraform&logoColor=white) ![GitHub Actions](https://img.shields.io/badge/-GitHub%20Actions-2088FF?style=flat&logo=github-actions&logoColor=white) |
+| **Observability** | ![Power BI](https://img.shields.io/badge/-Power%20BI-F2C811?style=flat&logo=power-bi&logoColor=black) ![Grafana](https://img.shields.io/badge/-Grafana-F46800?style=flat&logo=grafana&logoColor=white) ![Prometheus](https://img.shields.io/badge/-Prometheus-E6522C?style=flat&logo=prometheus&logoColor=white) ![Azure Monitor](https://img.shields.io/badge/-Azure%20Monitor-0078D4?style=flat&logo=microsoft-azure&logoColor=white) |
 
-[Learn more about GitHub Pages](https://pages.github.com/)
+---
 
-## Rename this repository to publish your site
+### 🧪 DagsHub ML Workspace
+*Showcasing data-centric projects and experiment tracking.*
 
-We've already set-up a GitHub Pages website for you, based on your personal username. This repository is called `hello-world`, but you'll rename it to: `username.github.io`, to match your website's URL address. If the first part of the repository doesn’t exactly match your username, it won’t work, so make sure to get it right.
+<p align="center">
+  <a href="https://dagshub.com/SushP07">
+    <img src="https://dagshub.com/SushP07.svg" alt="DagsHub Profile" />
+  </a>
+</p>
 
-Let's get started! To update this repository’s name, click the `Settings` tab on this page. This will take you to your repository’s settings page. 
+---
 
-![repo-settings-image](https://user-images.githubusercontent.com/18093541/63130482-99e6ad80-bf88-11e9-99a1-d3cf1660b47e.png)
+### ⚙️ Live GitHub Analytics
+*These stats update dynamically based on my latest activity on GitHub.*
 
-Under the **Repository Name** heading, type: `username.github.io`, where username is your username on GitHub. Then click **Rename**—and that’s it. When you’re done, click your repository name or browser’s back button to return to this page.
+<p align="center">
+  <img height="180em" src="https://github-readme-stats.vercel.app/api?username=SushP07&show_icons=true&theme=algolia&include_all_commits=true&count_private=true" alt="Sushrut's GitHub Stats"/>
+  <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=SushP07&layout=compact&langs_count=8&theme=algolia" alt="Top Languages"/>
+</p>
 
-<img width="1039" alt="rename_screenshot" src="https://user-images.githubusercontent.com/18093541/63129466-956cc580-bf85-11e9-92d8-b028dd483fa5.png">
+<p align="center">
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=SushP07&theme=algolia" alt="GitHub Streak" />
+</p>
 
-Once you click **Rename**, your website will automatically be published at: https://your-username.github.io/. The HTML file—called `index.html`—is rendered as the home page and you'll be making changes to this file in the next step.
+---
 
-Congratulations! You just launched your first GitHub Pages website. It's now live to share with the entire world
+### 🤝🏻 Connect with Me
 
-## Making your first edit
-
-When you make any change to any file in your project, you’re making a **commit**. If you fix a typo, update a filename, or edit your code, you can add it to GitHub as a commit. Your commits represent your project’s entire history—and they’re all saved in your project’s repository.
-
-With each commit, you have the opportunity to write a **commit message**, a short, meaningful comment describing the change you’re making to a file. So you always know exactly what changed, no matter when you return to a commit.
-
-## Practice: Customize your first GitHub website by writing HTML code
-
-Want to edit the site you just published? Let’s practice commits by introducing yourself in your `index.html` file. Don’t worry about getting it right the first time—you can always build on your introduction later.
-
-Let’s start with this template:
-
-```
-<p>Hello World! I’m [username]. This is my website!</p>
-```
-
-To add your introduction, copy our template and click the edit pencil icon at the top right hand corner of the `index.html` file.
-
-<img width="997" alt="edit-this-file" src="https://user-images.githubusercontent.com/18093541/63131820-0794d880-bf8d-11e9-8b3d-c096355e9389.png">
-
-
-Delete this placeholder line:
-
-```
-<p>Welcome to your first GitHub Pages website!</p>
-```
-
-Then, paste the template to line 15 and fill in the blanks.
-
-<img width="1032" alt="edit-githuboctocat-index" src="https://user-images.githubusercontent.com/18093541/63132339-c3a2d300-bf8e-11e9-8222-59c2702f6c42.png">
-
-
-When you’re done, scroll down to the `Commit changes` section near the bottom of the edit page. Add a short message explaining your change, like "Add my introduction", then click `Commit changes`.
-
-
-<img width="1030" alt="add-my-username" src="https://user-images.githubusercontent.com/18093541/63131801-efbd5480-bf8c-11e9-9806-89273f027d16.png">
-
-Once you click `Commit changes`, your changes will automatically be published on your GitHub Pages website. Refresh the page to see your new changes live in action.
-
-:tada: You just made your first commit! :tada:
-
-## Extra Credit: Keep on building!
-
-Change the placeholder Octocat gif on your GitHub Pages website by [creating your own personal Octocat emoji](https://myoctocat.com/build-your-octocat/) or [choose a different Octocat gif from our logo library here](https://octodex.github.com/). Add that image to line 12 of your `index.html` file, in place of the `<img src=` link.
-
-Want to add even more code and fun styles to your GitHub Pages website? [Follow these instructions](https://github.com/github/personal-website) to build a fully-fledged static website.
-
-![octocat](./images/create-octocat.png)
-
-## Everything you need to know about GitHub
-
-Getting started is the hardest part. If there’s anything you’d like to know as you get started with GitHub, try searching [GitHub Help](https://help.github.com). Our documentation has tutorials on everything from changing your repository settings to configuring GitHub from your command line.
+<p align="center">
+<a href="https://www.linkedin.com/in/sushrut-pakhale"><img src="https://img.shields.io/badge/-LinkedIn-0077B5?style=flat&logo=Linkedin&logoColor=white"/></a>
+<a href="mailto:spakhale.sp@gmail.com"><img src="https://img.shields.io/badge/-Email-D14836?style=flat&logo=Gmail&logoColor=white"/></a>
+<a href="https://github.com/SushP07"><img src="https://img.shields.io/badge/-GitHub-181717?style=flat&logo=github&logoColor=white"/></a>
+<a href="https://dagshub.com/SushP07"><img src="https://img.shields.io/badge/-DagsHub-7DBA2B?style=flat&logo=dagshub&logoColor=white"/></a>
+</p>
