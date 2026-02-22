@@ -22,6 +22,34 @@
             --accent-dim: rgba(0, 255, 65, 0.1);
             --blue-accent: #58a6ff;
             --laptop-gray: #2d2d30;
+
+            /* Image-Matched Brand Colors */
+            --color-python: #3776ab;
+            --color-csharp: #239120;
+            --color-java: #b07219;
+            --color-js: #f7df1e;
+            --color-pytorch: #ee4c2c;
+            --color-sklearn: #f7931e;
+            --color-mlflow: #0194e2;
+            --color-genai: #ffcf11;
+            --color-aws: #ff9900;
+            --color-databricks: #ff3621;
+            --color-snowflake: #29b5e8;
+            --color-postgres: #336791;
+            --color-azure: #0078d4;
+            --color-docker: #2496ed;
+            --color-k8s: #326ce5;
+            --color-terraform: #7b42bc;
+            --color-github: #4078c0;
+            --color-pbi: #f2c811;
+            --color-grafana: #f46800;
+            --color-prometheus: #e6522c;
+
+            /* Social Interaction Colors */
+            --social-red: #ff4b2b;
+            --social-blue: #0077b5;
+            --social-white: #ffffff;
+            --social-cyan: #00ffcc;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -34,7 +62,7 @@
             overflow: hidden; 
         }
 
-        /* --- CINEMATIC ZOOM INTRO --- */
+        /* --- CINEMATIC ZOOM INTRO (Brightened Neon) --- */
         #intro-wrapper {
             position: fixed;
             top: 0; left: 0;
@@ -46,6 +74,8 @@
             z-index: 9999;
             perspective: 2000px;
             transition: opacity 0.8s ease-out;
+            /* Added ambient glow to background */
+            background: radial-gradient(circle, rgba(0, 255, 65, 0.15) 0%, #000 80%);
         }
 
         .laptop {
@@ -55,7 +85,8 @@
             transform-style: preserve-3d;
             transform: rotateX(-10deg) translateZ(-500px);
             transition: transform 1.8s cubic-bezier(0.65, 0, 0.35, 1), width 1.8s, height 1.8s;
-            filter: drop-shadow(0 0 15px rgba(0, 255, 65, 0.3));
+            /* Intensified initial drop shadow */
+            filter: drop-shadow(0 0 25px rgba(0, 255, 65, 0.6));
         }
 
         body.loaded .laptop {
@@ -120,6 +151,16 @@
             transform: rotateX(80deg);
             transform-origin: top;
             box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+        }
+
+        /* Brightened pulse animation */
+        @keyframes neonPulse {
+            from { filter: drop-shadow(0 0 15px rgba(0, 255, 65, 0.4)); }
+            to { filter: drop-shadow(0 0 50px rgba(0, 255, 65, 0.8)); }
+        }
+
+        body.loaded .laptop {
+            animation: neonPulse 3s infinite alternate;
         }
 
         body.zoomed #intro-wrapper {
@@ -227,7 +268,7 @@
             letter-spacing: 1px;
             font-weight: bold;
             opacity: 0;
-            transition: opacity 0.5s ease 0.5s;
+            transition: opacity 0.5s ease;
             text-transform: uppercase;
         }
         .status-badge.visible { opacity: 1; }
@@ -239,6 +280,55 @@
         }
 
         .subheading { color: var(--text-secondary); font-size: 1.05rem; max-width: 600px; font-family: 'Inter', sans-serif; min-height: 3em; }
+
+        /* Social Icons Interaction (Blinking and Glow) */
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid var(--border);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .social-link i, .social-link svg { width: 18px; height: 18px; transition: transform 0.3s ease; }
+        .social-link:hover i, .social-link:hover svg { transform: scale(1.15); }
+
+        .social-mail { color: var(--social-red); }
+        .social-mail.blinking { animation: socialPulseRed 2.2s infinite alternate; }
+
+        .social-linkedin { color: var(--social-blue); }
+        .social-linkedin.blinking { animation: socialPulseBlue 2.2s infinite alternate; }
+
+        .social-github { color: var(--social-white); }
+        .social-github.blinking { animation: socialPulseWhite 2.2s infinite alternate; }
+
+        .social-dagshub { color: var(--social-cyan); }
+        .social-dagshub.blinking { animation: socialPulseCyan 2.2s infinite alternate; }
+
+        @keyframes socialPulseRed {
+            from { box-shadow: 0 0 5px rgba(255, 75, 43, 0.2); border-color: var(--border); }
+            to { box-shadow: 0 0 20px rgba(255, 75, 43, 0.7); border-color: var(--social-red); }
+        }
+
+        @keyframes socialPulseBlue {
+            from { box-shadow: 0 0 5px rgba(0, 119, 181, 0.2); border-color: var(--border); }
+            to { box-shadow: 0 0 20px rgba(0, 119, 181, 0.7); border-color: var(--social-blue); }
+        }
+
+        @keyframes socialPulseWhite {
+            from { box-shadow: 0 0 5px rgba(255, 255, 255, 0.1); border-color: var(--border); }
+            to { box-shadow: 0 0 15px rgba(255, 255, 255, 0.5); border-color: var(--social-white); }
+        }
+
+        @keyframes socialPulseCyan {
+            from { box-shadow: 0 0 5px rgba(0, 255, 204, 0.2); border-color: var(--border); }
+            to { box-shadow: 0 0 20px rgba(0, 255, 204, 0.7); border-color: var(--social-cyan); }
+        }
 
         /* SECTIONS */
         section { margin-bottom: 100px; }
@@ -261,11 +351,52 @@
         
         .skill-card-header {
             display: flex; justify-content: space-between; align-items: center;
-            margin-bottom: 10px; border-bottom: 1px solid #222; padding-bottom: 8px;
+            margin-bottom: 12px; border-bottom: 1px solid #222; padding-bottom: 8px;
         }
         .skill-title { color: var(--accent); font-size: 0.85rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
         .skill-status { color: #444; font-size: 0.7rem; }
         
+        .skill-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            min-height: 1.4em;
+        }
+        .badge {
+            background: #16161a;
+            border: 1px solid #333;
+            color: var(--text-primary);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-weight: 500;
+        }
+        .badge.visible { opacity: 1; transform: scale(1); }
+
+        .badge-python { border-color: var(--color-python); color: var(--color-python); }
+        .badge-csharp { border-color: var(--color-csharp); color: var(--color-csharp); }
+        .badge-java { border-color: var(--color-java); color: var(--color-java); }
+        .badge-js { border-color: var(--color-js); color: var(--color-js); }
+        .badge-pytorch { border-color: var(--color-pytorch); color: var(--color-pytorch); }
+        .badge-sklearn { border-color: var(--color-sklearn); color: var(--color-sklearn); }
+        .badge-mlflow { border-color: var(--color-mlflow); color: var(--color-mlflow); }
+        .badge-genai { border-color: var(--color-genai); color: var(--color-genai); }
+        .badge-aws { border-color: var(--color-aws); color: var(--color-aws); }
+        .badge-databricks { border-color: var(--color-databricks); color: var(--color-databricks); }
+        .badge-snowflake { border-color: var(--color-snowflake); color: var(--color-snowflake); }
+        .badge-postgres { border-color: var(--color-postgres); color: var(--color-postgres); }
+        .badge-azure { border-color: var(--color-azure); color: var(--color-azure); }
+        .badge-docker { border-color: var(--color-docker); color: var(--color-docker); }
+        .badge-k8s { border-color: var(--color-k8s); color: var(--color-k8s); }
+        .badge-terraform { border-color: var(--color-terraform); color: var(--color-terraform); }
+        .badge-github { border-color: var(--color-github); color: var(--color-github); }
+        .badge-pbi { border-color: var(--color-pbi); color: var(--color-pbi); }
+        .badge-grafana { border-color: var(--color-grafana); color: var(--color-grafana); }
+        .badge-prometheus { border-color: var(--color-prometheus); color: var(--color-prometheus); }
+
         .typed-content { font-size: 0.9rem; color: var(--text-primary); min-height: 1.4em; line-height: 1.6; white-space: pre-wrap; }
         .typing-cursor { display: inline-block; width: 8px; height: 1.1em; background: var(--accent); vertical-align: middle; animation: blink 1s infinite; }
 
@@ -333,10 +464,16 @@
                         <h1 id="hero-name"></h1>
                         <div id="hero-sub" class="subheading"></div>
                         <div id="socials" style="display: flex; gap: 20px; margin-top: 20px; opacity: 0; transition: 0.5s opacity;">
-                            <a href="mailto:spakhale.sp@gmail.com"><i data-lucide="mail"></i></a>
-                            <a href="https://linkedin.com/in/sushrut-pakhale"><i data-lucide="linkedin"></i></a>
-                            <a href="https://github.com/SushP07"><i data-lucide="github"></i></a>
-                            <a href="https://dagshub.com/SushP07">
+                            <a href="mailto:spakhale.sp@gmail.com" class="social-link social-mail blinking" title="Email Me">
+                                <i data-lucide="mail"></i>
+                            </a>
+                            <a href="https://linkedin.com/in/sushrut-pakhale" class="social-link social-linkedin blinking" title="LinkedIn">
+                                <i data-lucide="linkedin"></i>
+                            </a>
+                            <a href="https://github.com/SushP07" class="social-link social-github blinking" title="GitHub">
+                                <i data-lucide="github"></i>
+                            </a>
+                            <a href="https://dagshub.com/SushP07" class="social-link social-dagshub blinking" title="DagsHub">
                                 <svg style="width:18px;height:18px" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                             </a>
                         </div>
@@ -347,33 +484,40 @@
                 <section id="skills">
                     <h2 id="cmd-skills"></h2>
                     <div class="skills-queue">
-                        <div class="skill-card" id="card-cloud">
+                        <div class="skill-card" id="card-prog">
                             <div class="skill-card-header">
-                                <span class="skill-title" id="title-cloud"></span>
-                                <span class="skill-status">MOD: 1.2s</span>
+                                <span class="skill-title" id="title-prog"></span>
+                                <span class="skill-status">MOD: 0.4s</span>
                             </div>
-                            <div class="typed-content" id="content-cloud"></div>
+                            <div class="skill-badges" id="badges-prog"></div>
                         </div>
                         <div class="skill-card" id="card-ai">
                             <div class="skill-card-header">
                                 <span class="skill-title" id="title-ai"></span>
                                 <span class="skill-status">MOD: 0.8s</span>
                             </div>
-                            <div class="typed-content" id="content-ai"></div>
+                            <div class="skill-badges" id="badges-ai"></div>
+                        </div>
+                        <div class="skill-card" id="card-dataeng">
+                            <div class="skill-card-header">
+                                <span class="skill-title" id="title-dataeng"></span>
+                                <span class="skill-status">MOD: 1.2s</span>
+                            </div>
+                            <div class="skill-badges" id="badges-dataeng"></div>
                         </div>
                         <div class="skill-card" id="card-mlops">
                             <div class="skill-card-header">
                                 <span class="skill-title" id="title-mlops"></span>
                                 <span class="skill-status">MOD: 2.1s</span>
                             </div>
-                            <div class="typed-content" id="content-mlops"></div>
+                            <div class="skill-badges" id="badges-mlops"></div>
                         </div>
-                        <div class="skill-card" id="card-data">
+                        <div class="skill-card" id="card-obs">
                             <div class="skill-card-header">
-                                <span class="skill-title" id="title-data"></span>
+                                <span class="skill-title" id="title-obs"></span>
                                 <span class="skill-status">MOD: 0.5s</span>
                             </div>
-                            <div class="typed-content" id="content-data"></div>
+                            <div class="skill-badges" id="badges-obs"></div>
                         </div>
                     </div>
                 </section>
@@ -460,13 +604,50 @@
             cursor.remove();
         }
 
+        // Color-Aware Badge Generator
+        async function typeBadges(containerId, badges, delay = 100) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            container.innerHTML = "";
+            for (let b of badges) {
+                const bSpan = document.createElement('span');
+                bSpan.className = 'badge';
+                
+                const lower = b.toLowerCase();
+                if (lower === 'python') bSpan.classList.add('badge-python');
+                if (lower === 'c#') bSpan.classList.add('badge-csharp');
+                if (lower === 'java') bSpan.classList.add('badge-java');
+                if (lower === 'javascript') bSpan.classList.add('badge-js');
+                if (lower === 'pytorch') bSpan.classList.add('badge-pytorch');
+                if (lower === 'scikit-learn') bSpan.classList.add('badge-sklearn');
+                if (lower === 'mlflow') bSpan.classList.add('badge-mlflow');
+                if (lower === 'genai') bSpan.classList.add('badge-genai');
+                if (lower.includes('sagemaker')) bSpan.classList.add('badge-aws');
+                if (lower === 'databricks') bSpan.classList.add('badge-databricks');
+                if (lower === 'snowflake') bSpan.classList.add('badge-snowflake');
+                if (lower === 'postgresql') bSpan.classList.add('badge-postgres');
+                if (lower.includes('azure')) bSpan.classList.add('badge-azure');
+                if (lower === 'docker') bSpan.classList.add('badge-docker');
+                if (lower === 'kubernetes') bSpan.classList.add('badge-k8s');
+                if (lower === 'terraform') bSpan.classList.add('badge-terraform');
+                if (lower.includes('github')) bSpan.classList.add('badge-github');
+                if (lower === 'power bi') bSpan.classList.add('badge-pbi');
+                if (lower === 'grafana') bSpan.classList.add('badge-grafana');
+                if (lower === 'prometheus') bSpan.classList.add('badge-prometheus');
+
+                bSpan.innerText = b;
+                container.appendChild(bSpan);
+                bSpan.offsetHeight; 
+                bSpan.classList.add('visible');
+                await new Promise(r => setTimeout(r, delay));
+            }
+        }
+
         async function typeSequence() {
-            // Reset visibility for replay
-            document.querySelectorAll('.skill-card, .log-entry, .card').forEach(el => el.classList.remove('visible'));
+            document.querySelectorAll('.skill-card, .log-entry, .card, .badge').forEach(el => el.classList.remove('visible'));
             document.getElementById('avatar').classList.remove('visible');
             document.getElementById('socials').style.opacity = "0";
             document.getElementById('footer').style.opacity = "0";
-            
             const nameEl = document.getElementById('hero-name');
             nameEl.innerHTML = "";
 
@@ -475,40 +656,49 @@
             document.getElementById('avatar').classList.add('visible');
             await typeText("hero-name", "Sushrut Pakhale", 70);
             
-            // Badge & Dots
             const badge = document.createElement('span');
             badge.className = 'status-badge';
             badge.innerText = 'SOFTWARE ENGINEER';
             nameEl.appendChild(badge);
+            setTimeout(() => badge.classList.add('visible'), 50);
+            
+            await new Promise(r => setTimeout(r, 600));
             const dotsSpan = document.createElement('span');
             dotsSpan.className = 'dots';
             nameEl.appendChild(dotsSpan);
-            setTimeout(() => badge.classList.add('visible'), 50);
 
             await typeText("hero-sub", "Lead-minded Software & Data Engineer at National Grid. Specializing in scalable ML pipelines across Azure and AWS SageMaker.", 18);
             document.getElementById('socials').style.opacity = "1";
 
-            // SKILLS
-            await typeText("cmd-skills", "system_scan --tech-stack", 47);
-            document.getElementById('card-cloud').classList.add('visible');
-            await typeText("title-cloud", "ls cloud & platforms", 35);
-            await typeText("content-cloud", "Azure (Functions, AKS, Azure ML), AWS (Lambda, SageMaker), Snowflake, Databricks", 12);
+            // SKILLS (Lowercase 'ls' commands)
+            await typeText("cmd-skills", "ls technical-skills/", 47);
+            
+            document.getElementById('card-prog').classList.add('visible');
+            await typeText("title-prog", "ls programming", 35);
+            await typeBadges("badges-prog", ["Python", "C#", "Java", "JavaScript"]);
+
             document.getElementById('card-ai').classList.add('visible');
             await typeText("title-ai", "ls ai & machine learning", 35);
-            await typeText("content-ai", "PyTorch, TensorFlow, Scikit-Learn, BYOL, Computer Vision, Neural Networks", 12);
-            document.getElementById('card-mlops').classList.add('visible');
-            await typeText("title-mlops", "ls mlops & automation", 35);
-            await typeText("content-mlops", "Terraform, Docker, Kubernetes, GitHub Actions, Jenkins, GitOps, MLflow", 12);
-            document.getElementById('card-data').classList.add('visible');
-            await typeText("title-data", "ls data & observability", 35);
-            await typeText("content-data", "PostgreSQL, PySpark, Power BI, Grafana, Prometheus, Azure Monitor", 12);
+            await typeBadges("badges-ai", ["PyTorch", "Scikit-Learn", "MLflow", "GenAI", "AWS SageMaker"]);
+            
+            document.getElementById('card-dataeng').classList.add('visible');
+            await typeText("title-dataeng", "ls data engineering", 35);
+            await typeBadges("badges-dataeng", ["Databricks", "Snowflake", "PostgreSQL", "Azure Functions"]);
 
-            // EXPERIENCE
+            document.getElementById('card-mlops').classList.add('visible');
+            await typeText("title-mlops", "ls devops & mlops", 35);
+            await typeBadges("badges-mlops", ["Docker", "Kubernetes", "Terraform", "GitHub Actions"]);
+            
+            document.getElementById('card-obs').classList.add('visible');
+            await typeText("title-obs", "ls observability", 35);
+            await typeBadges("badges-obs", ["Power BI", "Grafana", "Prometheus", "Azure Monitor"]);
+
+            // EXPERIENCE (Lowercase 'cat' commands)
             await typeText("cmd-exp", "cat work_history.log", 47);
             document.getElementById('exp-1').classList.add('visible');
-            await typeText("content-exp-1", "• Authored robust CI/CD pipelines using GitHub Actions, reducing deployment cycle times by 35%.\n• Managed Azure Kubernetes Service (AKS) clusters and implemented observability via Grafana and Prometheus.", 12);
+            await typeText("content-exp-1", "• Authored robust CI/CD pipelines using GitHub Actions, reducing deployment cycle times by 35%.\n• Managed Azure Kubernetes Service (AKS) clusters and implemented observability via Grafana and Prometheus.\n• Collaborated on cross-functional cloud architecture to optimize compute cost and scalability.", 12);
             document.getElementById('exp-2').classList.add('visible');
-            await typeText("content-exp-2", "• Designed scalable ETL pipelines via Azure Functions and PySpark for energy data processing.\n• Integrated anomaly detection and drift monitoring, improving system uptime by 15%.", 12);
+            await typeText("content-exp-2", "• Designed scalable ETL pipelines via Azure Functions and PySpark for energy data processing.\n• Integrated anomaly detection and drift monitoring, improving system uptime by 15%.\n• Developed automated Power BI reporting pipelines reducing manual effort by 100%.", 12);
 
             // EDUCATION
             await typeText("cmd-edu", "cat education.txt", 47);
