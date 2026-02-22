@@ -50,7 +50,7 @@
 
         .laptop {
             position: relative;
-            width: 200px; /* Start as a small icon */
+            width: 200px; 
             height: 130px;
             transform-style: preserve-3d;
             transform: rotateX(-10deg) translateZ(-500px);
@@ -97,8 +97,20 @@
         body.loaded .screen-content { opacity: 1; }
 
         .deploying-text { color: var(--accent); font-size: 1.2rem; letter-spacing: 2px; }
-        .dots::after { content: ''; animation: loadingDots 1s infinite; }
-        @keyframes loadingDots { 0% { content: ''; } 33% { content: '.'; } 66% { content: '..'; } 100% { content: '...'; } }
+        
+        /* Loading Dots CSS */
+        .dots::after {
+            content: '';
+            animation: loadingDots 1.5s infinite;
+        }
+
+        @keyframes loadingDots {
+            0% { content: ''; }
+            25% { content: '.'; }
+            50% { content: '..'; }
+            75% { content: '...'; }
+            100% { content: ''; }
+        }
 
         .base {
             position: absolute;
@@ -111,7 +123,6 @@
             box-shadow: 0 20px 50px rgba(0,0,0,0.8);
         }
 
-        /* The Zoom into Screen effect */
         body.zoomed #intro-wrapper {
             transform: scale(10) translateZ(1200px);
             opacity: 0;
@@ -148,6 +159,20 @@
         .dot-ui.yellow { background: #ffbd2e; }
         .dot-ui.green { background: #27c93f; }
 
+        .terminal-title { font-size: 0.8rem; color: var(--text-secondary); flex-grow: 1; text-align: center; }
+        
+        .replay-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            margin-left: 10px;
+            display: flex;
+            align-items: center;
+            transition: color 0.3s;
+        }
+        .replay-btn:hover { color: var(--accent); }
+
         .content { padding: 40px; }
 
         /* HERO SECTION */
@@ -166,7 +191,15 @@
         .command-line { color: var(--accent); margin-bottom: 10px; display: flex; align-items: center; gap: 10px; min-height: 1.5em; }
         .command-line::before { content: "➜"; }
         
-        h1 { font-size: 2.5rem; margin-bottom: 10px; font-family: 'Inter', sans-serif; font-weight: 700; min-height: 1.2em; }
+        h1 { font-size: 2.5rem; margin-bottom: 10px; font-family: 'Inter', sans-serif; font-weight: 700; min-height: 1.2em; display: flex; align-items: center; }
+        
+        /* Persistent Name Dots */
+        #hero-name .dots {
+            color: var(--accent);
+            margin-left: 8px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
         .subheading { color: var(--text-secondary); font-size: 1.05rem; max-width: 600px; font-family: 'Inter', sans-serif; min-height: 3em; }
 
         /* SECTIONS */
@@ -247,6 +280,9 @@
             <div class="title-bar">
                 <div class="dots-controls"><div class="dot-ui red"></div><div class="dot-ui yellow"></div><div class="dot-ui green"></div></div>
                 <div class="terminal-title">sushp07 — zsh — 100x30</div>
+                <button class="replay-btn" id="replay-btn" title="Replay Animation">
+                    <i data-lucide="refresh-cw" size="14"></i>
+                </button>
             </div>
 
             <div class="content">
@@ -339,17 +375,17 @@
                         <div class="card" id="proj-1">
                             <h3>WineQual MLOps</h3>
                             <p>AWS SageMaker pipeline with drift monitoring and 94.2% accuracy. Production-ready model governance.</p>
-                            <a href="https://github.com/SushP07" class="btn-link"><i data-lucide="github"></i> Repository</a>
+                            <a href="https://dagshub.com/SushP07/machine_learning_pipeline_v1s" class="btn-link"><i data-lucide="github"></i> Repository</a>
                         </div>
                         <div class="card" id="proj-2">
                             <h3>SageMaker E2E ML</h3>
                             <p>Automated ingestion and deployment system built with SageMaker and AWS Lambda for real-time inference.</p>
-                            <a href="https://github.com/SushP07" class="btn-link"><i data-lucide="github"></i> Repository</a>
+                            <a href="https://dagshub.com/SushP07/machine_learning_pipeline_v1" class="btn-link"><i data-lucide="github"></i> Repository</a>
                         </div>
                         <div class="card" id="proj-3">
                             <h3>BYOL FOD Detection</h3>
-                            <p>CV research surpassing SOTA benchmarks using self-supervised learning representations on airport datasets.</p>
-                            <a href="https://github.com/SushP07" class="btn-link"><i data-lucide="github"></i> Research</a>
+                            <p>MSc. research surpassing SOTA benchmarks using self-supervised learning representations on airport datasets.</p>
+                            <a href="https://github.com/SushP07/BYOL_FOD-A_Object_Detection" class="btn-link"><i data-lucide="github"></i> Research</a>
                         </div>
                     </div>
                 </section>
@@ -365,16 +401,6 @@
 
     <script>
         lucide.createIcons();
-
-        /* Speeds adjusted by ~+17% (slower delay) to reduce the rate of typing.
-           Original vs New (rounded):
-           50ms -> 59ms
-           60ms -> 70ms
-           15ms -> 18ms
-           40ms -> 47ms
-           30ms -> 35ms
-           10ms -> 12ms
-        */
 
         // Sequential Typing Engine
         async function typeText(id, text, speed = 30) {
@@ -393,11 +419,24 @@
         }
 
         async function typeSequence() {
+            // Reset visibility for replay
+            document.querySelectorAll('.skill-card, .log-entry, .card').forEach(el => el.classList.remove('visible'));
+            document.getElementById('avatar').classList.remove('visible');
+            document.getElementById('socials').style.opacity = "0";
+            document.getElementById('footer').style.opacity = "0";
+
             // HERO
             await typeText("cmd-whoami", "whoami", 59);
             document.getElementById('avatar').classList.add('visible');
+            
+            // Type name then append dots
             await typeText("hero-name", "Sushrut Pakhale", 70);
-            await typeText("hero-sub", "Lead-minded Software & Data Engineer at National Grid. Specializing in scalable ML pipelines across Azure and AWS SageMaker.", 18);
+            const nameEl = document.getElementById('hero-name');
+            const dotsSpan = document.createElement('span');
+            dotsSpan.className = 'dots';
+            nameEl.appendChild(dotsSpan);
+
+            await typeText("hero-sub", "Lead-minded Software & Data Engineer at National Grid specializing in building reliable, scalable ML pipelines across Azure and AWS SageMaker. I combine a deep understanding of National Grid’s infrastructure—having reduced deployment cycle times by 35%—with advanced expertise in MLOps, statistical modeling, and automated model governance. Expert in turning complex data into actionable insights while mentoring junior engineers to foster a culture of technical excellence.", 18);
             document.getElementById('socials').style.opacity = "1";
 
             // SKILLS
@@ -422,7 +461,7 @@
             // EXPERIENCE
             await typeText("cmd-exp", "cat work_history.log", 47);
             document.getElementById('exp-1').classList.add('visible');
-            await typeText("content-exp-1", "Authoring CI/CD workflows, managing AKS clusters, and streamlining operational visibility. Reduced deployment cycle times by 35%.", 12);
+            await typeText("content-exp-1", "•	Authored and maintained reusable CI/CD workflows for DataOps, AKS deployments, and cluster management reducing deployment cycle times by 35%.•	Managed AKS clusters with namespace and secret configurations and integrated monitoring stack using Grafana, Prometheus, and Azure Monitor, delivering 3 real-time dashboards and 10 proactive alerts.•	Embedded security scanning (Checkmarx One and Sonarqube) , detecting vulnerabilities earlier and reducing production risks.•	Automated Power BI deployment pipeline using GitHub Actions, reducing manual effort by 100%.•	Streamlined Power BI deployment with GitHub metrics reporting for improved operational visibility for 6 months of data.", 12);
             document.getElementById('exp-2').classList.add('visible');
             await typeText("content-exp-2", "Designed scalable ETL pipelines via Azure Functions and PySpark. Improved system uptime by 15% through anomaly detection.", 12);
 
@@ -442,8 +481,12 @@
             document.getElementById('footer').style.opacity = "1";
         }
 
-        // Intro Logic
-        window.addEventListener('load', () => {
+        function triggerIntro() {
+            // Reset body classes
+            document.body.classList.remove('loaded', 'zoomed', 'show-content');
+            const intro = document.getElementById('intro-wrapper');
+            intro.style.display = 'flex';
+            
             // 1. Initial laptop placement
             setTimeout(() => document.body.classList.add('loaded'), 100);
             
@@ -457,11 +500,16 @@
                 
                 // Remove overlay after zoom is complete to allow scrolling
                 setTimeout(() => {
-                    const intro = document.getElementById('intro-wrapper');
-                    if(intro) intro.style.display = 'none';
+                    intro.style.display = 'none';
                 }, 800);
             }, 3200);
-        });
+        }
+
+        // Handle Replay
+        document.getElementById('replay-btn').addEventListener('click', triggerIntro);
+
+        // Initial Load
+        window.addEventListener('load', triggerIntro);
     </script>
 </body>
 </html>
