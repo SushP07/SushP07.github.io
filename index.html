@@ -7,7 +7,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
     <!-- Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     
@@ -98,7 +98,6 @@
 
         .deploying-text { color: var(--accent); font-size: 1.2rem; letter-spacing: 2px; }
         
-        /* Loading Dots CSS */
         .dots::after {
             content: '';
             animation: loadingDots 1.5s infinite;
@@ -177,23 +176,62 @@
 
         /* HERO SECTION */
         .hero { margin-bottom: 80px; display: flex; align-items: center; gap: 40px; }
+        
         .hero-avatar {
             width: 180px; height: 180px;
-            border-radius: 12px;
-            border: 2px solid var(--border);
+            border-radius: 50%;
+            border: 3px solid var(--border);
             object-fit: cover;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.1);
             opacity: 0;
-            transition: opacity 0.5s ease;
+            transition: opacity 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
+            position: relative;
         }
-        .hero-avatar.visible { opacity: 1; }
+        .hero-avatar.visible { 
+            opacity: 1; 
+            border-color: var(--accent);
+            box-shadow: 0 0 30px rgba(0, 255, 65, 0.3);
+            animation: avatarPulse 4s infinite alternate;
+        }
+        
+        @keyframes avatarPulse {
+            from { box-shadow: 0 0 20px rgba(0, 255, 65, 0.2); }
+            to { box-shadow: 0 0 40px rgba(0, 255, 65, 0.4); }
+        }
 
         .command-line { color: var(--accent); margin-bottom: 10px; display: flex; align-items: center; gap: 10px; min-height: 1.5em; }
         .command-line::before { content: "➜"; }
         
-        h1 { font-size: 2.5rem; margin-bottom: 10px; font-family: 'Inter', sans-serif; font-weight: 700; min-height: 1.2em; display: flex; align-items: center; }
+        h1 { 
+            font-size: 2.6rem; 
+            margin-bottom: 10px; 
+            font-family: 'Inter', sans-serif; 
+            font-weight: 800; 
+            min-height: 1.2em; 
+            display: flex; 
+            align-items: center;
+            color: #fff;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+            letter-spacing: -1px;
+        }
         
-        /* Persistent Name Dots */
+        .status-badge {
+            font-size: 0.65rem;
+            background: var(--accent-dim);
+            color: var(--accent);
+            padding: 2px 10px;
+            border-radius: 4px;
+            border: 1px solid var(--accent);
+            margin-left: 15px;
+            font-family: 'JetBrains Mono', monospace;
+            letter-spacing: 1px;
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 0.5s ease 0.5s;
+            text-transform: uppercase;
+        }
+        .status-badge.visible { opacity: 1; }
+        
         #hero-name .dots {
             color: var(--accent);
             margin-left: 8px;
@@ -228,11 +266,11 @@
         .skill-title { color: var(--accent); font-size: 0.85rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
         .skill-status { color: #444; font-size: 0.7rem; }
         
-        .typed-content { font-size: 0.9rem; color: var(--text-primary); min-height: 1.4em; line-height: 1.5; }
+        .typed-content { font-size: 0.9rem; color: var(--text-primary); min-height: 1.4em; line-height: 1.6; white-space: pre-wrap; }
         .typing-cursor { display: inline-block; width: 8px; height: 1.1em; background: var(--accent); vertical-align: middle; animation: blink 1s infinite; }
 
         /* LOG ENTRIES */
-        .log-entry { margin-bottom: 35px; border-left: 1px dashed var(--border); padding-left: 20px; position: relative; opacity: 0; transition: 0.5s opacity; }
+        .log-entry { margin-bottom: 40px; border-left: 1px dashed var(--border); padding-left: 20px; position: relative; opacity: 0; transition: 0.5s opacity; }
         .log-entry.visible { opacity: 1; }
         .log-entry::after { content: ''; position: absolute; left: -5px; top: 0; width: 9px; height: 9px; background: var(--blue-accent); border-radius: 50%; }
         
@@ -257,6 +295,8 @@
         @media (max-width: 768px) {
             .hero { flex-direction: column; text-align: center; }
             .hero-avatar { width: 140px; height: 140px; }
+            h1 { font-size: 1.8rem; justify-content: center; }
+            .status-badge { margin-left: 0; margin-top: 10px; display: inline-block; }
         }
     </style>
 </head>
@@ -375,17 +415,17 @@
                         <div class="card" id="proj-1">
                             <h3>WineQual MLOps</h3>
                             <p>AWS SageMaker pipeline with drift monitoring and 94.2% accuracy. Production-ready model governance.</p>
-                            <a href="https://dagshub.com/SushP07/machine_learning_pipeline_v1s" class="btn-link"><i data-lucide="github"></i> Repository</a>
+                            <a href="https://github.com/SushP07/WineQual-MLOps" class="btn-link"><i data-lucide="github"></i> Repository</a>
                         </div>
                         <div class="card" id="proj-2">
                             <h3>SageMaker E2E ML</h3>
                             <p>Automated ingestion and deployment system built with SageMaker and AWS Lambda for real-time inference.</p>
-                            <a href="https://dagshub.com/SushP07/machine_learning_pipeline_v1" class="btn-link"><i data-lucide="github"></i> Repository</a>
+                            <a href="https://github.com/SushP07/SageMaker-E2E-Pipeline" class="btn-link"><i data-lucide="github"></i> Repository</a>
                         </div>
                         <div class="card" id="proj-3">
                             <h3>BYOL FOD Detection</h3>
-                            <p>MSc. research surpassing SOTA benchmarks using self-supervised learning representations on airport datasets.</p>
-                            <a href="https://github.com/SushP07/BYOL_FOD-A_Object_Detection" class="btn-link"><i data-lucide="github"></i> Research</a>
+                            <p>CV research surpassing SOTA benchmarks using self-supervised learning representations on airport datasets.</p>
+                            <a href="https://github.com/SushP07/BYOL-FOD-Detection" class="btn-link"><i data-lucide="github"></i> Research</a>
                         </div>
                     </div>
                 </section>
@@ -406,11 +446,13 @@
         async function typeText(id, text, speed = 30) {
             const el = document.getElementById(id);
             if (!el) return;
-            el.innerHTML = "";
-            const cursor = document.createElement('span');
-            cursor.className = 'typing-cursor';
-            el.appendChild(cursor);
-
+            if (!el.querySelector('.typing-cursor')) {
+                el.innerHTML = "";
+                const cursor = document.createElement('span');
+                cursor.className = 'typing-cursor';
+                el.appendChild(cursor);
+            }
+            const cursor = el.querySelector('.typing-cursor');
             for (let char of text) {
                 cursor.before(char);
                 await new Promise(r => setTimeout(r, speed));
@@ -424,36 +466,39 @@
             document.getElementById('avatar').classList.remove('visible');
             document.getElementById('socials').style.opacity = "0";
             document.getElementById('footer').style.opacity = "0";
+            
+            const nameEl = document.getElementById('hero-name');
+            nameEl.innerHTML = "";
 
             // HERO
             await typeText("cmd-whoami", "whoami", 59);
             document.getElementById('avatar').classList.add('visible');
-            
-            // Type name then append dots
             await typeText("hero-name", "Sushrut Pakhale", 70);
-            const nameEl = document.getElementById('hero-name');
+            
+            // Badge & Dots
+            const badge = document.createElement('span');
+            badge.className = 'status-badge';
+            badge.innerText = 'SOFTWARE ENGINEER';
+            nameEl.appendChild(badge);
             const dotsSpan = document.createElement('span');
             dotsSpan.className = 'dots';
             nameEl.appendChild(dotsSpan);
+            setTimeout(() => badge.classList.add('visible'), 50);
 
-            await typeText("hero-sub", "Senior Software Engineer", 18);
+            await typeText("hero-sub", "Lead-minded Software & Data Engineer at National Grid. Specializing in scalable ML pipelines across Azure and AWS SageMaker.", 18);
             document.getElementById('socials').style.opacity = "1";
 
             // SKILLS
             await typeText("cmd-skills", "system_scan --tech-stack", 47);
-            
             document.getElementById('card-cloud').classList.add('visible');
             await typeText("title-cloud", "ls cloud & platforms", 35);
             await typeText("content-cloud", "Azure (Functions, AKS, Azure ML), AWS (Lambda, SageMaker), Snowflake, Databricks", 12);
-            
             document.getElementById('card-ai').classList.add('visible');
             await typeText("title-ai", "ls ai & machine learning", 35);
             await typeText("content-ai", "PyTorch, TensorFlow, Scikit-Learn, BYOL, Computer Vision, Neural Networks", 12);
-            
             document.getElementById('card-mlops').classList.add('visible');
             await typeText("title-mlops", "ls mlops & automation", 35);
             await typeText("content-mlops", "Terraform, Docker, Kubernetes, GitHub Actions, Jenkins, GitOps, MLflow", 12);
-            
             document.getElementById('card-data').classList.add('visible');
             await typeText("title-data", "ls data & observability", 35);
             await typeText("content-data", "PostgreSQL, PySpark, Power BI, Grafana, Prometheus, Azure Monitor", 12);
@@ -461,54 +506,39 @@
             // EXPERIENCE
             await typeText("cmd-exp", "cat work_history.log", 47);
             document.getElementById('exp-1').classList.add('visible');
-            await typeText("content-exp-1", "•	Authored and maintained reusable CI/CD workflows for DataOps, AKS deployments, and cluster management reducing deployment cycle times by 35%.", 12);
+            await typeText("content-exp-1", "• Authored robust CI/CD pipelines using GitHub Actions, reducing deployment cycle times by 35%.\n• Managed Azure Kubernetes Service (AKS) clusters and implemented observability via Grafana and Prometheus.", 12);
             document.getElementById('exp-2').classList.add('visible');
-            await typeText("content-exp-2", "Designed scalable ETL pipelines via Azure Functions and PySpark. Improved system uptime by 15% through anomaly detection.", 12);
+            await typeText("content-exp-2", "• Designed scalable ETL pipelines via Azure Functions and PySpark for energy data processing.\n• Integrated anomaly detection and drift monitoring, improving system uptime by 15%.", 12);
 
             // EDUCATION
             await typeText("cmd-edu", "cat education.txt", 47);
             document.getElementById('edu-1').classList.add('visible');
-            await typeText("content-edu-1", "Developed computer vision framework using BYOL for FOD detection. Surpassed SOTA benchmarks with 89.9% accuracy.", 12);
+            await typeText("content-edu-1", "• Developed computer vision framework using BYOL for FOD detection. Surpassed SOTA benchmarks with 89.9% accuracy.", 12);
             document.getElementById('edu-2').classList.add('visible');
-            await typeText("content-edu-2", "Focused on neural networks, scalable software systems, and distributed data processing.", 12);
+            await typeText("content-edu-2", "• Focused on neural networks, scalable software systems, and distributed data processing.", 12);
 
             // PROJECTS
             await typeText("cmd-proj", "ls ./projects", 47);
             document.getElementById('proj-1').classList.add('visible');
             document.getElementById('proj-2').classList.add('visible');
             document.getElementById('proj-3').classList.add('visible');
-            
             document.getElementById('footer').style.opacity = "1";
         }
 
         function triggerIntro() {
-            // Reset body classes
             document.body.classList.remove('loaded', 'zoomed', 'show-content');
             const intro = document.getElementById('intro-wrapper');
             intro.style.display = 'flex';
-            
-            // 1. Initial laptop placement
             setTimeout(() => document.body.classList.add('loaded'), 100);
-            
-            // 2. Cinematic zoom directly into the center of the screen
             setTimeout(() => document.body.classList.add('zoomed'), 2500);
-            
-            // 3. Reveal the terminal UI and start the typing sequence
             setTimeout(() => {
                 document.body.classList.add('show-content');
                 typeSequence();
-                
-                // Remove overlay after zoom is complete to allow scrolling
-                setTimeout(() => {
-                    intro.style.display = 'none';
-                }, 800);
+                setTimeout(() => { intro.style.display = 'none'; }, 800);
             }, 3200);
         }
 
-        // Handle Replay
         document.getElementById('replay-btn').addEventListener('click', triggerIntro);
-
-        // Initial Load
         window.addEventListener('load', triggerIntro);
     </script>
 </body>
