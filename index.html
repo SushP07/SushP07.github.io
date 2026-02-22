@@ -4,7 +4,463 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sushrut Pakhale | Terminal Portfolio</title>
+    <!-- Fonts --<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sushrut Pakhale | Terminal Portfolio</title>
     <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        :root {
+            --bg: #0a0a0c;
+            --surface: #121214;
+            --border: #2d2d30;
+            --text-primary: #e1e1e6;
+            --text-secondary: #a9a9b3;
+            --accent: #00ff41; 
+            --accent-dim: rgba(0, 255, 65, 0.1);
+            --blue-accent: #58a6ff;
+            --laptop-gray: #2d2d30;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-primary);
+            font-family: 'JetBrains Mono', monospace;
+            line-height: 1.6;
+            overflow: hidden; 
+        }
+
+        /* --- CINEMATIC ZOOM INTRO --- */
+        #intro-wrapper {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #000;
+            z-index: 9999;
+            perspective: 2000px;
+            transition: opacity 0.8s ease-out;
+        }
+
+        .laptop {
+            position: relative;
+            width: 300px; /* Start smaller */
+            height: 200px;
+            transform-style: preserve-3d;
+            transform: rotateX(-10deg) scale(0.5); /* Scale down at start */
+            transition: transform 1.5s cubic-bezier(0.65, 0, 0.35, 1), width 1.5s, height 1.5s;
+            filter: drop-shadow(0 0 15px rgba(0, 255, 65, 0.3));
+        }
+
+        body.loaded .laptop {
+            transform: rotateX(-10deg) scale(1);
+            width: 600px;
+            height: 400px;
+        }
+
+        .lid {
+            position: absolute;
+            width: 100%; height: 100%;
+            background: var(--laptop-gray);
+            border: 8px solid #1a1a1c;
+            border-radius: 12px 12px 0 0;
+            transform-origin: bottom;
+            transform: rotateX(-90deg);
+            transition: transform 1s ease-out 0.5s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+            transform-style: preserve-3d;
+        }
+
+        body.loaded .lid { transform: rotateX(0deg); }
+
+        .screen-content {
+            width: 98%; height: 96%;
+            background: #000;
+            border-radius: 4px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease 1.5s;
+        }
+
+        body.loaded .screen-content { opacity: 1; }
+
+        .deploying-text { color: var(--accent); font-size: 1.2rem; letter-spacing: 2px; }
+        .dots::after { content: ''; animation: loadingDots 1s infinite; }
+        @keyframes loadingDots { 0% { content: ''; } 33% { content: '.'; } 66% { content: '..'; } 100% { content: '...'; } }
+
+        .base {
+            position: absolute;
+            top: 100%; left: -5%;
+            width: 110%; height: 20px;
+            background: #3c3c40;
+            border-radius: 0 0 20px 20px;
+            transform: rotateX(80deg);
+            transform-origin: top;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+        }
+
+        /* The Zoom into Screen effect */
+        body.zoomed #intro-wrapper {
+            transform: scale(8) translateZ(1000px);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        body.show-content { overflow-y: auto; }
+        body.show-content #main-content { opacity: 1; visibility: visible; }
+
+        /* --- MAIN CONTENT --- */
+        #main-content { opacity: 0; visibility: hidden; transition: opacity 0.5s ease; }
+
+        .terminal-window {
+            max-width: 900px;
+            margin: 40px auto;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+            overflow: hidden;
+        }
+
+        .title-bar {
+            background: #1c1c1f;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .dots-controls { display: flex; gap: 8px; margin-right: 20px; }
+        .dot-ui { width: 12px; height: 12px; border-radius: 50%; }
+        .dot-ui.red { background: #ff5f56; }
+        .dot-ui.yellow { background: #ffbd2e; }
+        .dot-ui.green { background: #27c93f; }
+
+        .content { padding: 40px; }
+
+        /* HERO SECTION */
+        .hero { margin-bottom: 80px; display: flex; align-items: center; gap: 40px; }
+        .hero-avatar {
+            width: 180px; height: 180px;
+            border-radius: 12px;
+            border: 2px solid var(--border);
+            object-fit: cover;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        .hero-avatar.visible { opacity: 1; }
+
+        .command-line { color: var(--accent); margin-bottom: 10px; display: flex; align-items: center; gap: 10px; min-height: 1.5em; }
+        .command-line::before { content: "➜"; }
+        
+        h1 { font-size: 2.5rem; margin-bottom: 10px; font-family: 'Inter', sans-serif; font-weight: 700; min-height: 1.2em; }
+        .subheading { color: var(--text-secondary); font-size: 1.05rem; max-width: 600px; font-family: 'Inter', sans-serif; min-height: 3em; }
+
+        /* SECTIONS */
+        section { margin-bottom: 100px; }
+        h2 { color: var(--blue-accent); font-size: 1.2rem; margin-bottom: 30px; display: flex; align-items: center; gap: 10px; min-height: 1.5em; }
+
+        .skills-queue { display: flex; flex-direction: column; gap: 20px; }
+        .skill-card {
+            background: #0d0d0f;
+            border: 1px solid var(--border);
+            padding: 20px;
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: 0.5s all;
+        }
+        .skill-card.visible { opacity: 1; transform: translateY(0); }
+        .skill-card::before { content: ""; position: absolute; left: 0; top: 0; width: 2px; height: 100%; background: var(--accent); }
+        
+        .skill-card-header {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 10px; border-bottom: 1px solid #222; padding-bottom: 8px;
+        }
+        .skill-title { color: var(--accent); font-size: 0.85rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
+        .skill-status { color: #444; font-size: 0.7rem; }
+        
+        .typed-content { font-size: 0.9rem; color: var(--text-primary); min-height: 1.4em; line-height: 1.5; }
+        .typing-cursor { display: inline-block; width: 8px; height: 1.1em; background: var(--accent); vertical-align: middle; animation: blink 1s infinite; }
+
+        /* LOG ENTRIES */
+        .log-entry { margin-bottom: 35px; border-left: 1px dashed var(--border); padding-left: 20px; position: relative; opacity: 0; transition: 0.5s opacity; }
+        .log-entry.visible { opacity: 1; }
+        .log-entry::after { content: ''; position: absolute; left: -5px; top: 0; width: 9px; height: 9px; background: var(--blue-accent); border-radius: 50%; }
+        
+        .log-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 5px; }
+        .title-main { font-weight: bold; color: #fff; font-size: 1rem; }
+        .date-tag { color: var(--accent); font-size: 0.85rem; }
+        .subtitle-role { font-size: 0.9rem; color: var(--blue-accent); display: block; margin-bottom: 10px; font-weight: bold; }
+
+        /* PROJECT CARDS */
+        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .card { background: #161b22; border: 1px solid var(--border); padding: 20px; border-radius: 6px; opacity: 0; transform: translateY(10px); transition: 0.3s all; }
+        .card.visible { opacity: 1; transform: translateY(0); }
+        .card h3 { font-size: 0.9rem; color: var(--accent); margin-bottom: 10px; text-transform: uppercase; }
+        .card p { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 15px; }
+        .btn-link { font-size: 0.8rem; color: var(--blue-accent); text-decoration: none; font-weight: bold; display: flex; align-items: center; gap: 5px; }
+
+        @keyframes blink { 50% { opacity: 0; } }
+
+        footer { display: flex; justify-content: center; gap: 30px; padding: 40px 0; border-top: 1px solid var(--border); }
+        footer a { color: var(--text-primary); text-decoration: none; font-size: 0.9rem; display: flex; align-items: center; gap: 8px; }
+
+        @media (max-width: 768px) {
+            .hero { flex-direction: column; text-align: center; }
+            .hero-avatar { width: 140px; height: 140px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ZOOM INTRO OVERLAY -->
+    <div id="intro-wrapper">
+        <div class="laptop">
+            <div class="lid">
+                <div class="screen-content">
+                    <div class="deploying-text">Deploying<span class="dots"></span></div>
+                </div>
+            </div>
+            <div class="base"></div>
+        </div>
+    </div>
+
+    <!-- MAIN PORTFOLIO -->
+    <div id="main-content">
+        <div class="terminal-window">
+            <div class="title-bar">
+                <div class="dots-controls"><div class="dot-ui red"></div><div class="dot-ui yellow"></div><div class="dot-ui green"></div></div>
+                <div class="terminal-title">sushp07 — zsh — 100x30</div>
+            </div>
+
+            <div class="content">
+                <div class="hero">
+                    <img src="https://github.com/SushP07.png" alt="Sushrut Pakhale" class="hero-avatar" id="avatar">
+                    <div class="hero-text">
+                        <div class="command-line" id="cmd-whoami"></div>
+                        <h1 id="hero-name"></h1>
+                        <div id="hero-sub" class="subheading"></div>
+                        <div id="socials" style="display: flex; gap: 20px; margin-top: 20px; opacity: 0; transition: 0.5s opacity;">
+                            <a href="mailto:spakhale.sp@gmail.com"><i data-lucide="mail"></i></a>
+                            <a href="https://linkedin.com/in/sushrut-pakhale"><i data-lucide="linkedin"></i></a>
+                            <a href="https://github.com/SushP07"><i data-lucide="github"></i></a>
+                            <a href="https://dagshub.com/SushP07">
+                                <svg style="width:18px;height:18px" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SKILLS SECTION -->
+                <section id="skills">
+                    <h2 id="cmd-skills"></h2>
+                    <div class="skills-queue">
+                        <div class="skill-card" id="card-cloud">
+                            <div class="skill-card-header">
+                                <span class="skill-title" id="title-cloud"></span>
+                                <span class="skill-status">MOD: 1.2s</span>
+                            </div>
+                            <div class="typed-content" id="content-cloud"></div>
+                        </div>
+                        <div class="skill-card" id="card-ai">
+                            <div class="skill-card-header">
+                                <span class="skill-title" id="title-ai"></span>
+                                <span class="skill-status">MOD: 0.8s</span>
+                            </div>
+                            <div class="typed-content" id="content-ai"></div>
+                        </div>
+                        <div class="skill-card" id="card-mlops">
+                            <div class="skill-card-header">
+                                <span class="skill-title" id="title-mlops"></span>
+                                <span class="skill-status">MOD: 2.1s</span>
+                            </div>
+                            <div class="typed-content" id="content-mlops"></div>
+                        </div>
+                        <div class="skill-card" id="card-data">
+                            <div class="skill-card-header">
+                                <span class="skill-title" id="title-data"></span>
+                                <span class="skill-status">MOD: 0.5s</span>
+                            </div>
+                            <div class="typed-content" id="content-data"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- EXPERIENCE -->
+                <section id="experience">
+                    <h2 id="cmd-exp"></h2>
+                    <div class="log-entry" id="exp-1">
+                        <div class="log-header"><span class="title-main">National Grid</span><span class="date-tag">2024 – Present</span></div>
+                        <span class="subtitle-role">Senior Associate Analyst</span>
+                        <div class="typed-content" id="content-exp-1"></div>
+                    </div>
+                    <div class="log-entry" id="exp-2">
+                        <div class="log-header"><span class="title-main">National Grid</span><span class="date-tag">2022 – 2024</span></div>
+                        <span class="subtitle-role">Data Engineer</span>
+                        <div class="typed-content" id="content-exp-2"></div>
+                    </div>
+                </section>
+
+                <!-- EDUCATION -->
+                <section id="education">
+                    <h2 id="cmd-edu"></h2>
+                    <div class="log-entry" id="edu-1">
+                        <div class="log-header"><span class="title-main">Cranfield University, UK</span><span class="date-tag">2021 – 2022</span></div>
+                        <span class="subtitle-role">MSc in Applied Artificial Intelligence</span>
+                        <div class="typed-content" id="content-edu-1"></div>
+                    </div>
+                    <div class="log-entry" id="edu-2">
+                        <div class="log-header"><span class="title-main">RTM Nagpur University, India</span><span class="date-tag">2017 – 2021</span></div>
+                        <span class="subtitle-role">BE in Computer Science & Engineering</span>
+                        <div class="typed-content" id="content-edu-2"></div>
+                    </div>
+                </section>
+
+                <!-- PROJECTS -->
+                <section id="projects">
+                    <h2 id="cmd-proj"></h2>
+                    <div class="project-grid">
+                        <div class="card" id="proj-1">
+                            <h3>WineQual MLOps</h3>
+                            <p>AWS SageMaker pipeline with drift monitoring and 94.2% accuracy. Production-ready model governance.</p>
+                            <a href="https://github.com/SushP07" class="btn-link"><i data-lucide="github"></i> Repository</a>
+                        </div>
+                        <div class="card" id="proj-2">
+                            <h3>SageMaker E2E ML</h3>
+                            <p>Automated ingestion and deployment system built with SageMaker and AWS Lambda for real-time inference.</p>
+                            <a href="https://github.com/SushP07" class="btn-link"><i data-lucide="github"></i> Repository</a>
+                        </div>
+                        <div class="card" id="proj-3">
+                            <h3>BYOL FOD Detection</h3>
+                            <p>CV research surpassing SOTA benchmarks using self-supervised learning representations on airport datasets.</p>
+                            <a href="https://github.com/SushP07" class="btn-link"><i data-lucide="github"></i> Research</a>
+                        </div>
+                    </div>
+                </section>
+
+                <footer id="footer" style="opacity: 0;">
+                    <a href="https://linkedin.com/in/sushrut-pakhale"><i data-lucide="external-link"></i> LinkedIn</a>
+                    <a href="https://github.com/SushP07"><i data-lucide="code"></i> Source</a>
+                    <a href="mailto:spakhale.sp@gmail.com"><i data-lucide="mail"></i> Email</a>
+                </footer>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        // Sequential Typing Engine
+        async function typeText(id, text, speed = 25) {
+            const el = document.getElementById(id);
+            if (!el) return;
+            el.innerHTML = "";
+            const cursor = document.createElement('span');
+            cursor.className = 'typing-cursor';
+            el.appendChild(cursor);
+
+            for (let char of text) {
+                cursor.before(char);
+                await new Promise(r => setTimeout(r, speed));
+            }
+            cursor.remove();
+        }
+
+        async function typeSequence() {
+            // HERO
+            await typeText("cmd-whoami", "whoami", 50);
+            document.getElementById('avatar').classList.add('visible');
+            await typeText("hero-name", "Sushrut Pakhale", 60);
+            await typeText("hero-sub", "Lead-minded Software & Data Engineer at National Grid. Specializing in scalable ML pipelines across Azure and AWS SageMaker.", 15);
+            document.getElementById('socials').style.opacity = "1";
+
+            // SKILLS
+            await typeText("cmd-skills", "system_scan --tech-stack", 40);
+            
+            document.getElementById('card-cloud').classList.add('visible');
+            await typeText("title-cloud", "ls cloud & platforms", 30);
+            await typeText("content-cloud", "Azure (Functions, AKS, Azure ML), AWS (Lambda, SageMaker), Snowflake, Databricks", 10);
+            
+            document.getElementById('card-ai').classList.add('visible');
+            await typeText("title-ai", "ls ai & machine learning", 30);
+            await typeText("content-ai", "PyTorch, TensorFlow, Scikit-Learn, BYOL, Computer Vision, Neural Networks", 10);
+            
+            document.getElementById('card-mlops').classList.add('visible');
+            await typeText("title-mlops", "ls mlops & automation", 30);
+            await typeText("content-mlops", "Terraform, Docker, Kubernetes, GitHub Actions, Jenkins, GitOps, MLflow", 10);
+            
+            document.getElementById('card-data').classList.add('visible');
+            await typeText("title-data", "ls data & observability", 30);
+            await typeText("content-data", "PostgreSQL, PySpark, Power BI, Grafana, Prometheus, Azure Monitor", 10);
+
+            // EXPERIENCE
+            await typeText("cmd-exp", "cat work_history.log", 40);
+            document.getElementById('exp-1').classList.add('visible');
+            await typeText("content-exp-1", "Authoring CI/CD workflows, managing AKS clusters, and streamlining operational visibility. Reduced deployment cycle times by 35%.", 10);
+            document.getElementById('exp-2').classList.add('visible');
+            await typeText("content-exp-2", "Designed scalable ETL pipelines via Azure Functions and PySpark. Improved system uptime by 15% through anomaly detection.", 10);
+
+            // EDUCATION
+            await typeText("cmd-edu", "cat education.txt", 40);
+            document.getElementById('edu-1').classList.add('visible');
+            await typeText("content-edu-1", "Developed computer vision framework using BYOL for FOD detection. Surpassed SOTA benchmarks with 89.9% accuracy.", 10);
+            document.getElementById('edu-2').classList.add('visible');
+            await typeText("content-edu-2", "Focused on neural networks, scalable software systems, and distributed data processing.", 10);
+
+            // PROJECTS
+            await typeText("cmd-proj", "ls ./projects", 40);
+            document.getElementById('proj-1').classList.add('visible');
+            document.getElementById('proj-2').classList.add('visible');
+            document.getElementById('proj-3').classList.add('visible');
+            
+            document.getElementById('footer').style.opacity = "1";
+        }
+
+        // Intro Logic
+        window.addEventListener('load', () => {
+            // 1. Zoom/Scale into center (Laptop Icon state)
+            setTimeout(() => document.body.classList.add('loaded'), 100);
+            
+            // 2. Zoom specifically into the lid/screen
+            setTimeout(() => document.body.classList.add('zoomed'), 2500);
+            
+            // 3. Show content and start sequence
+            setTimeout(() => {
+                document.body.classList.add('show-content');
+                typeSequence();
+                
+                // Cleanup intro overlay
+                setTimeout(() => {
+                    const intro = document.getElementById('intro-wrapper');
+                    if(intro) intro.style.display = 'none';
+                }, 500);
+            }, 3200);
+        });
+    </script>
+</body>
+</html>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
