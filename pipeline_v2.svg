@@ -3,7 +3,7 @@
     <animate
       attributeName="cx"
       begin="0s"
-      dur="15s"
+      dur="1s"
       from="50"
       to="90%"
       repeatCount="indefinite" />
