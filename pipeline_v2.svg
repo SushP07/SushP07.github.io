@@ -1,103 +1,70 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
-  <rect width="800" height="600" fill="#f0f2f5" rx="10" ry="10" />
+<svg width="800" height="450" viewBox="0 0 800 450" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="450" rx="15" fill="#0B1019"/>
+  
+  <path d="M260 200 H380" stroke="#60A5FA" stroke-width="2" stroke-dasharray="5,5">
+    <animate attributeName="stroke-dashoffset" from="100" to="0" dur="2s" repeatCount="indefinite" />
+  </path>
+  <text x="320" y="190" fill="#94A3B8" font-family="Arial" font-size="10" text-anchor="middle">Log Params/Metrics</text>
 
-  <text x="400" y="40" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#333">MLflow on AWS Architecture</text>
+  <path d="M260 220 Q 320 280 580 220" stroke="#60A5FA" stroke-width="2" stroke-dasharray="5,5" fill="none">
+    <animate attributeName="stroke-dashoffset" from="100" to="0" dur="2s" repeatCount="indefinite" />
+  </path>
+  <text x="420" y="260" fill="#94A3B8" font-family="Arial" font-size="10" text-anchor="middle">Upload Artifacts</text>
 
-  <g transform="translate(50, 80)">
-    <rect width="250" height="400" fill="#ffffff" stroke="#ccc" stroke-width="2" rx="10" ry="10" />
-    <text x="125" y="30" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#333">Local Development</text>
+  <path d="M440 240 V320" stroke="#60A5FA" stroke-width="2" stroke-dasharray="5,5">
+    <animate attributeName="stroke-dashoffset" from="100" to="0" dur="2s" repeatCount="indefinite" />
+  </path>
+  <text x="445" y="285" fill="#94A3B8" font-family="Arial" font-size="10" text-anchor="start">Store Metadata</text>
 
-    <g transform="translate(20, 60)">
-      <rect width="210" height="80" fill="#e6f7ff" stroke="#91d5ff" stroke-width="1" rx="5" ry="5" />
-      <circle cx="40" cy="40" r="20" fill="#4B8BBE" />
-      <text x="40" y="45" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="white">Py</text>
-      <text x="70" y="35" font-family="Arial, sans-serif" font-size="14" fill="#333">ML Code & Data</text>
-      <text x="70" y="55" font-family="Arial, sans-serif" font-size="12" fill="#666">(Python, Scikit-learn)</text>
-    </g>
 
-    <g transform="translate(20, 160)">
-      <rect width="210" height="80" fill="#e6f7ff" stroke="#91d5ff" stroke-width="1" rx="5" ry="5" />
-      <circle cx="40" cy="40" r="20" fill="#0093E9" />
-      <text x="40" y="45" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="white">MLf</text>
-      <text x="70" y="35" font-family="Arial, sans-serif" font-size="14" fill="#333">MLflow Client</text>
-      <text x="70" y="55" font-family="Arial, sans-serif" font-size="12" fill="#666">(mlflow, boto3)</text>
-    </g>
+  <text x="400" y="40" fill="white" font-family="Arial" font-size="20" text-anchor="middle" font-weight="bold">MLflow on AWS Architecture</text>
 
-    <g transform="translate(20, 260)">
-      <rect width="210" height="100" fill="#fffbe6" stroke="#ffe58f" stroke-width="1" rx="5" ry="5" />
-      <text x="105" y="25" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#333">Environment Variables</text>
-      <text x="20" y="50" font-family="monospace" font-size="10" fill="#333">MLFLOW_TRACKING_URI</text>
-      <text x="20" y="70" font-family="monospace" font-size="10" fill="#333">AWS_ACCESS_KEY_ID</text>
-      <text x="20" y="90" font-family="monospace" font-size="10" fill="#333">AWS_SECRET_ACCESS_KEY</text>
-    </g>
-  </g>
 
-  <g transform="translate(350, 80)">
-    <rect width="400" height="400" fill="#ffffff" stroke="#ff9900" stroke-width="2" rx="10" ry="10" />
-    <text x="200" y="30" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#333">AWS Cloud</text>
+  <rect x="30" y="70" width="250" height="350" rx="10" fill="none" stroke="#334155" stroke-width="1"/>
+  <text x="155" y="100" fill="white" font-family="Arial" font-size="14" text-anchor="middle" font-weight="bold">Local Development</text>
 
-    <g transform="translate(30, 60)">
-      <rect width="150" height="120" fill="#f6ffed" stroke="#b7eb8f" stroke-width="1" rx="5" ry="5" />
-      <rect x="10" y="10" width="30" height="30" fill="#FF9900" rx="5" />
-      <text x="25" y="30" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="white">EC2</text>
-      <text x="50" y="30" font-family="Arial, sans-serif" font-size="14" fill="#333">EC2 Instance</text>
-      <text x="50" y="50" font-family="Arial, sans-serif" font-size="12" fill="#666">(Tracking Server)</text>
-      <text x="50" y="75" font-family="monospace" font-size="10" fill="#666">Port 5000</text>
-      <text x="50" y="95" font-family="monospace" font-size="10" fill="#666">Public IP/DNS</text>
-    </g>
+  <rect x="50" y="120" width="210" height="60" rx="8" fill="#1E293B" stroke="#4B8BBE" stroke-width="2"/>
+  <text x="155" y="145" fill="white" font-family="Arial" font-size="12" text-anchor="middle" font-weight="bold">ML Code & Data</text>
+  <text x="155" y="165" fill="#94A3B8" font-family="Arial" font-size="10" text-anchor="middle">(Python, Scikit-learn)</text>
 
-    <g transform="translate(220, 60)">
-      <rect width="150" height="120" fill="#fff0f6" stroke="#ffadd2" stroke-width="1" rx="5" ry="5" />
-      <rect x="10" y="10" width="30" height="30" fill="#FF9900" rx="5" />
-      <text x="25" y="30" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="white">S3</text>
-      <text x="50" y="30" font-family="Arial, sans-serif" font-size="14" fill="#333">S3 Bucket</text>
-      <text x="50" y="50" font-family="Arial, sans-serif" font-size="12" fill="#666">(Artifact Store)</text>
-      <text x="50" y="75" font-family="Arial, sans-serif" font-size="10" fill="#666">Models, Plots</text>
-      <text x="50" y="95" font-family="monospace" font-size="10" fill="#666">s3://mlflow-testing-07</text>
-    </g>
+  <rect x="50" y="190" width="210" height="60" rx="8" fill="#1E293B" stroke="#0093E9" stroke-width="2"/>
+  <text x="155" y="215" fill="white" font-family="Arial" font-size="12" text-anchor="middle" font-weight="bold">MLflow Client</text>
+  <text x="155" y="235" fill="#94A3B8" font-family="Arial" font-size="10" text-anchor="middle">(mlflow, boto3)</text>
 
-    <g transform="translate(30, 220)">
-      <rect width="150" height="120" fill="#e6f7ff" stroke="#91d5ff" stroke-width="1" rx="5" ry="5" />
-      <rect x="10" y="10" width="30" height="30" fill="#FF9900" rx="5" />
-      <text x="25" y="30" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="white">RDS</text>
-      <text x="50" y="30" font-family="Arial, sans-serif" font-size="14" fill="#333">RDS Instance</text>
-      <text x="50" y="50" font-family="Arial, sans-serif" font-size="12" fill="#666">(PostgreSQL)</text>
-      <text x="50" y="75" font-family="Arial, sans-serif" font-size="10" fill="#666">MLflow Metadata</text>
-      <text x="50" y="95" font-family="Arial, sans-serif" font-size="10" fill="#666">(Runs, Metrics)</text>
-    </g>
+  <rect x="50" y="280" width="210" height="120" rx="8" fill="#1E293B" stroke="#F59E0B" stroke-width="2"/>
+  <text x="155" y="305" fill="white" font-family="Arial" font-size="12" text-anchor="middle" font-weight="bold">Environment Variables</text>
+  <text x="60" y="330" fill="#94A3B8" font-family="monospace" font-size="10">MLFLOW_TRACKING_URI</text>
+  <text x="60" y="350" fill="#94A3B8" font-family="monospace" font-size="10">AWS_ACCESS_KEY_ID</text>
+  <text x="60" y="370" fill="#94A3B8" font-family="monospace" font-size="10">AWS_SECRET_ACCESS_KEY</text>
 
-    <g transform="translate(220, 220)">
-      <rect width="150" height="120" fill="#fffbe6" stroke="#ffe58f" stroke-width="1" rx="5" ry="5" />
-      <rect x="10" y="10" width="30" height="30" fill="#FF9900" rx="5" />
-      <text x="25" y="30" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="white">IAM</text>
-      <text x="50" y="30" font-family="Arial, sans-serif" font-size="14" fill="#333">IAM Roles</text>
-      <text x="50" y="50" font-family="Arial, sans-serif" font-size="12" fill="#666">(Access Control)</text>
-      <text x="50" y="75" font-family="Arial, sans-serif" font-size="10" fill="#666">Permissions for</text>
-      <text x="50" y="95" font-family="Arial, sans-serif" font-size="10" fill="#666">S3, EC2, RDS</text>
-    </g>
-  </g>
 
-  <path d="M 280 200 L 380 120" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)" />
-  <text x="330" y="150" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#333" transform="rotate(-38 330 150)">Log Params/Metrics</text>
-  <path d="M 280 200 L 570 120" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)" />
-  <text x="425" y="170" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#333" transform="rotate(-22 425 170)">Upload Artifacts</text>
-  <path d="M 105 180 L 105 220" transform="translate(380, 60)" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)" />
-  <text x="485" y="210" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#333">Store Metadata</text>
-  <path d="M 295 220 L 105 180" transform="translate(380, 60)" stroke="#333" stroke-width="1" stroke-dasharray="5,5" marker-end="url(#arrowhead)" />
-  <path d="M 295 220 L 295 180" transform="translate(380, 60)" stroke="#333" stroke-width="1" stroke-dasharray="5,5" marker-end="url(#arrowhead)" />
-  <path d="M 295 280 L 105 280" transform="translate(380, 60)" stroke="#333" stroke-width="1" stroke-dasharray="5,5" marker-end="url(#arrowhead)" />
-  <text x="670" y="380" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#333">Permissions</text>
+  <rect x="340" y="70" width="430" height="350" rx="10" fill="none" stroke="#FF9900" stroke-width="1"/>
+  <text x="555" y="100" fill="white" font-family="Arial" font-size="14" text-anchor="middle" font-weight="bold">AWS Cloud</text>
 
-  <g transform="translate(50, 500)">
-    <rect width="700" height="80" fill="#f9f9f9" stroke="#ccc" stroke-width="1" rx="5" ry="5" />
-    <text x="350" y="30" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">Elastic Net Model</text>
-    <text x="350" y="55" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">Combines L1 (Lasso) and L2 (Ridge) regularization to handle correlated features.</text>
-    <text x="350" y="75" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333">Hyperparameters: alpha, l1_ratio</text>
-  </g>
+  <rect x="380" y="120" width="160" height="120" rx="8" fill="#1E293B" stroke="#FF9900" stroke-width="2"/>
+  <text x="460" y="145" fill="white" font-family="Arial" font-size="12" text-anchor="middle" font-weight="bold">EC2 Instance</text>
+  <text x="460" y="165" fill="#94A3B8" font-family="Arial" font-size="10" text-anchor="middle">(Tracking Server)</text>
+  <text x="460" y="190" fill="#94A3B8" font-family="monospace" font-size="10" text-anchor="middle">Port 5000</text>
+  <text x="460" y="210" fill="#94A3B8" font-family="monospace" font-size="10" text-anchor="middle">Public IP/DNS</text>
 
-  <defs>
-    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-      <polygon points="0 0, 10 3.5, 0 7" fill="#333" />
-    </marker>
-  </defs>
+  <rect x="580" y="120" width="160" height="120" rx="8" fill="#1E293B" stroke="#FF5722" stroke-width="2"/>
+  <text x="660" y="145" fill="white" font-family="Arial" font-size="12" text-anchor="middle" font-weight="bold">S3 Bucket</text>
+  <text x="660" y="165" fill="#94A3B8" font-family="Arial" font-size="10" text-anchor="middle">(Artifact Store)</text>
+  <text x="660" y="190" fill="#94A3B8" font-family="Arial" font-size="10" text-anchor="middle">Models, Plots</text>
+  <text x="660" y="210" fill="#94A3B8" font-family="monospace" font-size="10" text-anchor="middle">s3://mlflow-testing-07</text>
+
+  <rect x="380" y="320" width="160" height="80" rx="8" fill="#1E293B" stroke="#326CE5" stroke-width="2"/>
+  <text x="460" y="345" fill="white" font-family="Arial" font-size="12" text-anchor="middle" font-weight="bold">RDS Instance</text>
+  <text x="460" y="365" fill="#94A3B8" font-family="Arial" font-size="10" text-anchor="middle">(PostgreSQL)</text>
+  <text x="460" y="385" fill="#94A3B8" font-family="Arial" font-size="10" text-anchor="middle">MLflow Metadata</text>
+
+  <rect x="580" y="320" width="160" height="80" rx="8" fill="#1E293B" stroke="#F59E0B" stroke-width="2"/>
+  <text x="660" y="345" fill="white" font-family="Arial" font-size="12" text-anchor="middle" font-weight="bold">IAM</text>
+  <text x="660" y="365" fill="#94A3B8" font-family="Arial" font-size="10" text-anchor="middle">(Access Control)</text>
+  <text x="660" y="385" fill="#94A3B8" font-family="Arial" font-size="10" text-anchor="middle">Permissions for S3, EC2, RDS</text>
+
+  <path d="M660 320 V280 H460 V240" stroke="#4ADE80" stroke-width="1" fill="none" stroke-dasharray="4"/>
+  <path d="M660 320 V280 H660 V240" stroke="#4ADE80" stroke-width="1" fill="none" stroke-dasharray="4"/>
+  <text x="560" y="275" fill="#4ADE80" font-family="Arial" font-size="10" text-anchor="middle">IAM Permissions</text>
+
 </svg>
