@@ -1,128 +1,103 @@
-<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+<svg width="800" height="500" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-      <path d="M 0 0 L 10 5 L 0 10 z" fill="#333" />
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569" />
     </marker>
     
-    <g id="icon-setup">
-      <circle cx="15" cy="15" r="8" stroke="white" stroke-width="2" fill="none"/>
-      <path d="M15 5 V2 M15 28 V25 M5 15 H2 M28 15 H25 M8 8 L6 6 M24 24 L22 22 M8 22 L6 24 M24 6 L22 8" stroke="white" stroke-width="2"/>
+    <g id="icon-user">
+      <circle cx="15" cy="10" r="5" fill="white"/>
+      <path d="M5 25 c0-5 10-5 20 0" stroke="white" stroke-width="2" fill="none"/>
     </g>
-    <g id="icon-cloud">
-      <path d="M7 20 A6 6 0 0 1 7 10 A8 8 0 0 1 20 8 A6 6 0 0 1 25 20 H7 Z" fill="white"/>
-    </g>
-    <g id="icon-bucket">
-      <path d="M5 8 L8 25 H22 L25 8 Z" fill="none" stroke="white" stroke-width="2"/>
-      <ellipse cx="15" cy="8" rx="10" ry="3" fill="none" stroke="white" stroke-width="2"/>
+    <g id="icon-code">
+      <path d="M8 8 L3 15 L8 22 M22 8 L27 15 L22 22" stroke="white" stroke-width="2" fill="none"/>
     </g>
     <g id="icon-server">
       <rect x="5" y="5" width="20" height="20" rx="2" fill="none" stroke="white" stroke-width="2"/>
-      <line x1="8" y1="10" x2="22" y2="10" stroke="white" stroke-width="2"/>
-      <line x1="8" y1="15" x2="22" y2="15" stroke="white" stroke-width="2"/>
-      <circle cx="20" cy="20" r="1.5" fill="white"/>
+      <circle cx="20" cy="10" r="1.5" fill="white"/>
     </g>
     <g id="icon-db">
       <ellipse cx="15" cy="6" rx="10" ry="3" stroke="white" stroke-width="2" fill="none"/>
       <path d="M5 6 v12 c0 2 5 3 10 3 s10 -1 10 -3 v-12" stroke="white" stroke-width="2" fill="none"/>
-      <path d="M5 12 c0 2 5 3 10 3 s10 -1 10 -3" stroke="white" stroke-width="2" fill="none"/>
     </g>
-    <g id="icon-code">
-      <path d="M8 8 L3 15 L8 22 M22 8 L27 15 L22 22 M12 25 L18 5" stroke="white" stroke-width="2" fill="none"/>
+    <g id="icon-bucket">
+      <path d="M5 8 L8 25 H22 L25 8 Z" fill="none" stroke="white" stroke-width="2"/>
+      <ellipse cx="15" cy="8" rx="10" ry="3" stroke="white" stroke-width="2" fill="none"/>
     </g>
   </defs>
 
   <style>
-    /* Clean modern font */
-    .text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif; font-size: 14px; font-weight: 600; fill: #333; }
+    .text-title { font-family: sans-serif; font-size: 14px; font-weight: 700; fill: #1e293b; text-anchor: middle; }
+    .text-sub { font-family: sans-serif; font-size: 11px; fill: #64748b; text-anchor: middle; }
     
-    /* Box Styles */
-    .box-rect { width: 150px; height: 60px; rx: 8px; stroke: #cbd5e1; stroke-width: 1; }
-    .box-blue { fill: #EFF6FF; stroke: #3B82F6; }
-    .box-orange { fill: #FFF7ED; stroke: #F97316; }
-    .box-red { fill: #FEF2F2; stroke: #EF4444; }
-    .box-purple { fill: #FAF5FF; stroke: #A855F7; }
+    .box { width: 160px; height: 70px; rx: 8px; stroke-width: 1; }
+    .box-code { fill: #EFF6FF; stroke: #3B82F6; }
+    .box-infra { fill: #FFF7ED; stroke: #F97316; }
+    .box-store { fill: #F0FDF4; stroke: #16A34A; }
+    
+    .icon-bg { fill-opacity: 1; }
+    .icon-bg-blue { fill: #3B82F6; }
+    .icon-bg-orange { fill: #F97316; }
+    .icon-bg-green { fill: #16A34A; }
 
-    /* Icon Container Circles */
-    .icon-circle { fill: #3B82F6; } /* Default Blue */
-    .icon-circle-orange { fill: #F97316; }
-    .icon-circle-red { fill: #EF4444; }
-    .icon-circle-purple { fill: #A855F7; }
-
-    /* Animated Arrows */
-    .arrow {
-      stroke: #64748b; /* Slate Grey */
-      stroke-width: 2;
-      marker-end: url(#arrow);
-      stroke-dasharray: 8, 4;
-      animation: dash 1s linear infinite;
+    .path-arrow {
       fill: none;
+      stroke: #94a3b8;
+      stroke-width: 2;
+      stroke-dasharray: 8,4;
+      marker-end: url(#arrow);
+      animation: flow 1s linear infinite;
     }
-    @keyframes dash {
-      from { stroke-dashoffset: 24; }
-      to { stroke-dashoffset: 0; }
-    }
+    @keyframes flow { to { stroke-dashoffset: -12; } }
   </style>
 
   <rect width="100%" height="100%" fill="#ffffff" />
 
-  <g transform="translate(50, 50)">
-    <rect class="box-rect box-blue" />
-    <circle cx="30" cy="30" r="18" class="icon-circle"/>
-    <use href="#icon-setup" x="15" y="15" />
-    <text class="text" x="95" y="35" text-anchor="middle">Env Setup</text>
+  <g transform="translate(50, 215)">
+    <rect class="box box-code" />
+    <circle cx="30" cy="35" r="18" class="icon-bg icon-bg-blue"/>
+    <use href="#icon-code" x="15" y="20" />
+    <text class="text-title" x="100" y="30">Training Script</text>
+    <text class="text-sub" x="100" y="50">Elastic Net Logic</text>
   </g>
 
-  <g transform="translate(325, 50)">
-    <rect class="box-rect box-orange" />
-    <circle cx="30" cy="30" r="18" class="icon-circle-orange"/>
-    <use href="#icon-cloud" x="15" y="15" />
-    <text class="text" x="95" y="35" text-anchor="middle">AWS Config</text>
+  <g transform="translate(320, 215)">
+    <rect class="box box-infra" />
+    <circle cx="30" cy="35" r="18" class="icon-bg icon-bg-orange"/>
+    <use href="#icon-server" x="15" y="20" />
+    <text class="text-title" x="100" y="30">MLflow Server</text>
+    <text class="text-sub" x="100" y="50">EC2 Gateway</text>
   </g>
 
-  <g transform="translate(600, 50)">
-    <rect class="box-rect box-red" />
-    <circle cx="30" cy="30" r="18" class="icon-circle-red"/>
-    <use href="#icon-bucket" x="15" y="15" />
-    <text class="text" x="95" y="35" text-anchor="middle">S3 Bucket</text>
+  <g transform="translate(600, 100)">
+    <rect class="box box-store" />
+    <circle cx="30" cy="35" r="18" class="icon-bg icon-bg-green"/>
+    <use href="#icon-bucket" x="15" y="20" />
+    <text class="text-title" x="100" y="30">Artifact Store</text>
+    <text class="text-sub" x="100" y="50">S3 (.pkl models)</text>
   </g>
 
-  <g transform="translate(50, 200)">
-    <rect class="box-rect box-purple" />
-    <circle cx="30" cy="30" r="18" class="icon-circle-purple"/>
-    <use href="#icon-server" x="15" y="15" />
-    <text class="text" x="95" y="35" text-anchor="middle">Tracking Svr</text>
+  <g transform="translate(600, 215)">
+    <rect class="box box-store" />
+    <circle cx="30" cy="35" r="18" class="icon-bg icon-bg-green"/>
+    <use href="#icon-db" x="15" y="20" />
+    <text class="text-title" x="100" y="30">Backend Store</text>
+    <text class="text-sub" x="100" y="50">Postgres Metrics</text>
   </g>
 
-  <g transform="translate(325, 200)">
-    <rect class="box-rect box-blue" />
-    <circle cx="30" cy="30" r="18" class="icon-circle"/>
-    <use href="#icon-db" x="15" y="15" />
-    <text class="text" x="95" y="35" text-anchor="middle">Postgres DB</text>
+  <g transform="translate(600, 330)">
+    <rect class="box box-infra" />
+    <circle cx="30" cy="35" r="18" class="icon-bg icon-bg-orange"/>
+    <use href="#icon-server" x="15" y="20" />
+    <text class="text-title" x="100" y="30">Model Registry</text>
+    <text class="text-sub" x="100" y="50">Version Control</text>
   </g>
 
-  <g transform="translate(600, 200)">
-    <rect class="box-rect box-blue" />
-    <circle cx="30" cy="30" r="18" class="icon-circle"/>
-    <use href="#icon-code" x="15" y="15" />
-    <text class="text" x="95" y="35" text-anchor="middle">ML Code</text>
-  </g>
-
-  <g transform="translate(325, 350)">
-    <rect class="box-rect box-purple" />
-    <circle cx="30" cy="30" r="18" class="icon-circle-purple"/>
-    <use href="#icon-server" x="15" y="15" /> <text class="text" x="95" y="35" text-anchor="middle">Model Registry</text>
-  </g>
-
-  <path class="arrow" d="M 200 80 L 318 80" />
+  <path class="path-arrow" d="M 210 250 L 312 250" />
   
-  <path class="arrow" d="M 475 80 L 593 80" />
+  <path class="path-arrow" d="M 480 240 C 530 240, 530 135, 592 135" />
   
-  <path class="arrow" d="M 125 110 L 125 193" />
+  <path class="path-arrow" d="M 480 250 L 592 250" />
   
-  <path class="arrow" d="M 200 230 L 318 230" />
-  
-  <path class="arrow" d="M 475 230 L 593 230" />
-  
-  <path class="arrow" d="M 400 260 L 400 343" />
+  <path class="path-arrow" d="M 480 260 C 530 260, 530 365, 592 365" />
 
 </svg>
