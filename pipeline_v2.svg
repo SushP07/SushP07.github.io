@@ -1,105 +1,102 @@
-<svg width="800" height="500" xmlns="http://www.w3.org/2000/svg">
+<svg width="850" height="600" viewBox="0 0 850 600" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
-      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569" />
-    </marker>
+    <linearGradient id="balancedGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fed7aa;stop-opacity:1" /> <stop offset="100%" style="stop-color:#bfdbfe;stop-opacity:1" /> </linearGradient>
     
-    <g id="icon-user">
-      <circle cx="15" cy="10" r="5" fill="white"/>
-      <path d="M5 25 c0-5 10-5 20 0" stroke="white" stroke-width="2" fill="none"/>
-    </g>
-    <g id="icon-code">
-      <path d="M8 8 L3 15 L8 22 M22 8 L27 15 L22 22" stroke="white" stroke-width="2" fill="none"/>
-    </g>
-    <g id="icon-server">
-      <rect x="5" y="5" width="20" height="20" rx="2" fill="none" stroke="white" stroke-width="2"/>
-      <circle cx="20" cy="10" r="1.5" fill="white"/>
-    </g>
-    <g id="icon-db">
-      <ellipse cx="15" cy="6" rx="10" ry="3" stroke="white" stroke-width="2" fill="none"/>
-      <path d="M5 6 v12 c0 2 5 3 10 3 s10 -1 10 -3 v-12" stroke="white" stroke-width="2" fill="none"/>
-    </g>
-    <g id="icon-bucket">
-      <path d="M5 8 L8 25 H22 L25 8 Z" fill="none" stroke="white" stroke-width="2"/>
-      <ellipse cx="15" cy="8" rx="10" ry="3" stroke="white" stroke-width="2" fill="none"/>
-    </g>
+    <marker id="arrow-yellow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#b45309" /> </marker>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1d4ed8" />
+    </marker>
+    <marker id="arrow-orange" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#c2410c" />
+    </marker>
   </defs>
 
   <style>
-    .text-title { font-family: sans-serif; font-size: 14px; font-weight: 700; fill: #1e293b; text-anchor: middle; }
-    .text-sub { font-family: sans-serif; font-size: 11px; fill: #64748b; text-anchor: middle; }
+    .text-title { font-family: sans-serif; font-size: 13px; font-weight: 700; fill: #1e293b; text-anchor: middle; }
+    .text-sub { font-family: sans-serif; font-size: 10px; fill: #334155; text-anchor: middle; }
+    .label-tag { font-family: sans-serif; font-size: 10px; font-weight: bold; fill: #1e293b; text-anchor: middle; }
+    .container-title { font-family: sans-serif; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; fill: #0f172a; }
     
-    .box { width: 160px; height: 70px; rx: 8px; stroke-width: 1; }
-    .box-code { fill: #EFF6FF; stroke: #3B82F6; }
-    .box-infra { fill: #FFF7ED; stroke: #F97316; }
-    .box-store { fill: #F0FDF4; stroke: #16A34A; }
+    .box { width: 160px; height: 80px; rx: 10; stroke-width: 2.5; fill: #ffffff; }
     
-    .icon-bg { fill-opacity: 1; }
-    .icon-bg-blue { fill: #3B82F6; }
-    .icon-bg-orange { fill: #F97316; }
-    .icon-bg-green { fill: #16A34A; }
+    .container-local { fill: #f1f5f9; fill-opacity: 0.3; stroke: #3b82f6; stroke-width: 2.5; stroke-dasharray: 8,4; }
+    .container-aws { fill: #fff7ed; fill-opacity: 0.3; stroke: #f97316; stroke-width: 2.5; stroke-dasharray: 8,4; }
 
-    .path-arrow {
-      fill: none;
-      stroke: #94a3b8;
-      stroke-width: 2;
-      stroke-dasharray: 8,4;
-      marker-end: url(#arrow);
-      animation: flow 1s linear infinite;
-    }
-    @keyframes flow { to { stroke-dashoffset: -12; } }
+    .flow-yellow { fill: none; stroke: #b45309; stroke-width: 2; stroke-dasharray: 6,3; marker-end: url(#arrow-yellow); animation: flow 1s linear infinite; }
+    .flow-blue { fill: none; stroke: #1d4ed8; stroke-width: 2.5; stroke-dasharray: 6,3; marker-end: url(#arrow-blue); animation: flow 1s linear infinite; }
+    .flow-orange { fill: none; stroke: #c2410c; stroke-width: 2; stroke-dasharray: 6,3; marker-end: url(#arrow-orange); animation: flow 1s linear infinite; }
+    
+    @keyframes flow { to { stroke-dashoffset: -18; } }
   </style>
 
-  <rect width="100%" height="100%" fill="#ffffff" />
+  <rect width="100%" height="100%" fill="url(#balancedGradient)" rx="15" />
 
-  <g transform="translate(50, 215)">
-    <rect class="box box-code" />
-    <circle cx="30" cy="35" r="18" class="icon-bg icon-bg-blue"/>
-    <use href="#icon-code" x="15" y="20" />
-    <text class="text-title" x="100" y="30">Training Script</text>
-    <text class="text-sub" x="100" y="50">Elastic Net Logic</text>
+  <g transform="translate(30, 40)">
+    <rect width="320" height="520" class="container-local" rx="15" />
+    <text x="160" y="-12" class="container-title">Local Development (app.py)</text>
+
+    <g transform="translate(80, 40)">
+      <rect class="box" stroke="#fbbf24" />
+      <rect x="0" y="0" width="40" height="20" rx="5" fill="#fbbf24" />
+      <text x="20" y="14" class="label-tag">DATA</text>
+      <text class="text-title" x="80" y="45">Wine Features</text>
+      <text class="text-sub" x="80" y="65">pH, Alcohol, Acidity</text>
+    </g>
+
+    <g transform="translate(80, 190)">
+      <rect class="box" stroke="#fbbf24" />
+      <rect x="0" y="0" width="40" height="20" rx="5" fill="#fbbf24" />
+      <text x="20" y="14" class="label-tag">FIT</text>
+      <text class="text-title" x="80" y="40">Elastic Net Model</text>
+      <text class="text-sub" x="80" y="55">Multicollinearity Fix</text>
+    </g>
+
+    <g transform="translate(80, 340)">
+      <rect class="box" stroke="#3b82f6" />
+      <rect x="0" y="0" width="55" height="20" rx="5" fill="#3b82f6" />
+      <text x="27.5" y="14" class="label-tag" fill="white">MLFLOW</text>
+      <text class="text-title" x="80" y="40">Start Remote Run</text>
+      <text class="text-sub" x="80" y="55">Set Tracking URI</text>
+    </g>
+
+    <path class="flow-yellow" d="M 160 120 L 160 185" />
+    <path class="flow-yellow" d="M 160 270 L 160 335" />
   </g>
 
-  <g transform="translate(320, 215)">
-    <rect class="box box-infra" />
-    <circle cx="30" cy="35" r="18" class="icon-bg icon-bg-orange"/>
-    <use href="#icon-server" x="15" y="20" />
-    <text class="text-title" x="100" y="30">MLflow Server</text>
-    <text class="text-sub" x="100" y="50">EC2 Gateway</text>
+  <g transform="translate(480, 40)">
+    <rect width="320" height="520" class="container-aws" rx="15" />
+    <text x="160" y="-12" class="container-title">AWS Cloud Infrastructure</text>
+
+    <g transform="translate(10, 40)">
+      <rect class="box" stroke="#f97316" />
+      <rect x="0" y="0" width="40" height="20" rx="5" fill="#f97316" />
+      <text x="20" y="14" class="label-tag">AUTH</text>
+      <text class="text-title" x="80" y="45">IAM &amp; S3 Setup</text>
+      <text class="text-sub" x="80" y="65">Secure Access Keys</text>
+    </g>
+
+    <g transform="translate(150, 190)">
+      <rect class="box" stroke="#f97316" />
+      <rect x="0" y="0" width="40" height="20" rx="5" fill="#f97316" />
+      <text x="20" y="14" class="label-tag">HOST</text>
+      <text class="text-title" x="80" y="45">EC2 Server</text>
+      <text class="text-sub" x="80" y="65">MLflow Listening...</text>
+    </g>
+
+    <g transform="translate(80, 340)">
+      <rect class="box" stroke="#f97316" stroke-width="4" />
+      <rect x="0" y="0" width="70" height="20" rx="5" fill="#f97316" />
+      <text x="35" y="14" class="label-tag">SUCCESS</text>
+      <text class="text-title" x="80" y="40">MLflow Dashboard</text>
+      <text class="text-sub" x="80" y="58">Cloud Storage Sync</text>
+    </g>
+
+    <path class="flow-orange" d="M 90 120 C 90 160, 230 150, 230 185" />
+    <path class="flow-orange" d="M 230 270 C 230 310, 160 310, 160 335" />
   </g>
 
-  <g transform="translate(600, 100)">
-    <rect class="box box-store" />
-    <circle cx="30" cy="35" r="18" class="icon-bg icon-bg-green"/>
-    <use href="#icon-bucket" x="15" y="20" />
-    <text class="text-title" x="100" y="30">Artifact Store</text>
-    <text class="text-sub" x="100" y="50">S3 (.pkl models)</text>
-  </g>
-
-  <g transform="translate(600, 215)">
-    <rect class="box box-store" />
-    <circle cx="30" cy="35" r="18" class="icon-bg icon-bg-green"/>
-    <use href="#icon-db" x="15" y="20" />
-    <text class="text-title" x="100" y="30">Backend Store</text>
-    <text class="text-sub" x="100" y="50">Postgres Metrics</text>
-  </g>
-
-  <g transform="translate(600, 330)">
-    <rect class="box box-infra" />
-    <circle cx="30" cy="35" r="18" class="icon-bg icon-bg-orange"/>
-    <use href="#icon-server" x="15" y="20" />
-    <text class="text-title" x="100" y="30">Model Registry</text>
-    <text class="text-sub" x="100" y="50">Version Control</text>
-  </g>
-
-  <path class="path-arrow" d="M 210 250 L 312 250" />
-  
-  <path class="path-arrow" d="M 480 240 C 530 240, 530 135, 592 135" />
-  
-  <path class="path-arrow" d="M 480 250 L 592 250" />
-  
-  <path class="path-arrow" d="M 480 260 C 530 260, 530 365, 592 365" />
-
+  <path class="flow-blue" d="M 330 420 L 555 420" />
+  <text x="442" y="410" class="text-title" fill="#1d4ed8" font-style="italic">python app.py</text>
 </svg>
-
-
