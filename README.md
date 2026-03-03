@@ -11,7 +11,7 @@ I am a **Lead-minded Software & Data Engineer** specialized in building reliable
 
 
 ---
-
+ [View Animated Pipeline](https://githhub.com/SushP07/SushP07.github.io/master/pipeline.html)
 
 ### 👨🏻‍💻 About Me
 
