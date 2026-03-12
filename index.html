@@ -469,19 +469,19 @@
                     <h2 id="cmd-proj"></h2>
                     <div class="project-grid">
                         <div class="card" id="proj-1">
-                            <h3>WineQual MLOps</h3>
-                            <p>AWS SageMaker pipeline with drift monitoring and 94.2% accuracy.</p>
-                            <a href="https://github.com/SushP07/WineQual-MLOps" class="btn-link"><i data-lucide="github"></i> Repository</a>
+                            <h3>Race Pace Strategy Optimizer</h3>
+                            <p>Predictive analytics engine for F1 race strategy optimization using live telemetry data.</p>
+                            <a href="https://github.com/SushP07/Race-Pace-Predictor-Strategy-Optimizer" target="_blank" class="btn-link"><i data-lucide="github"></i> Repository</a>
                         </div>
                         <div class="card" id="proj-2">
-                            <h3>Race Strategy Optimizer</h3>
-                            <p>Real-time strategy engine utilizing live telemetry and predictive analytics.</p>
-                            <a href="https://github.com/SushP07/Race-Pace-Predictor-Strategy-Optimizerr" class="btn-link"><i data-lucide="external-link"></i> DagsHub Project</a>
+                            <h3>Automate Containerization</h3>
+                            <p>CLI tool/scripting suite to streamline Docker/K8s deployments for microservices.</p>
+                            <a href="https://github.com/SushP07/automate_containerization" target="_blank" class="btn-link"><i data-lucide="github"></i> Repository</a>
                         </div>
                         <div class="card" id="proj-3">
-                            <h3>BYOL FOD Detection</h3>
-                            <p>CV research surpassing SOTA benchmarks using self-supervised learning.</p>
-                            <a href="https://github.com/SushP07/BYOL-FOD-Detection" class="btn-link"><i data-lucide="github"></i> Research</a>
+                            <h3>Python Fast API</h3>
+                            <p>High-performance backend template utilizing FastAPI with asynchronous database integration.</p>
+                            <a href="https://github.com/SushP07/first_fast_api_project" target="_blank" class="btn-link"><i data-lucide="github"></i> Repository</a>
                         </div>
                         <!-- INTERACTIVE CARD -->
                         <div class="terminal-card card" id="proj-4">
@@ -543,7 +543,7 @@
 
                 <section id="education">
                     <h2 id="cmd-edu"></h2>
-                    <div class="log-entry" id="edu-1">
+                    <div class="log-entry" id="user-edu-1">
                         <div class="log-header">
                             <span class="title-main">Cranfield University, UK</span>
                             <span class="date-tag">2021 – 2022</span>
@@ -551,7 +551,7 @@
                         <span class="subtitle-role">MSc in Applied Artificial Intelligence</span>
                         <div class="typed-content" id="content-edu-1"></div>
                     </div>
-                    <div class="log-entry" id="edu-2">
+                    <div class="log-entry" id="user-edu-2">
                         <div class="log-header">
                             <span class="title-main">RTM Nagpur University, India</span>
                             <span class="date-tag">2017 – 2021</span>
@@ -562,27 +562,25 @@
                 </section>
             </div>
 
-            <!-- VIEW: ARCHIVE (ADD YOUR EXTERNAL LINKS HERE) -->
+            <!-- VIEW: ARCHIVE -->
             <div id="view-archive" class="content-view hidden">
                 <div class="command-line">ls -all ./more-projects</div>
                 <h2 style="color: var(--accent); margin-top: 20px;">Extended Project Archive</h2>
                 
                 <div class="project-grid">
-                    <!-- Project Example: Linking to another GitHub Pages repo -->
                     <div class="card visible" style="opacity:1; transform:none;">
-                        <h3>External Project A</h3>
-                        <p>This links to another HTML interface hosted in a separate repository.</p>
-                        <a href="https://SushP07.github.io/other-repo-name/" target="_blank" class="btn-link">
-                            <i data-lucide="external-link"></i> Open Interface
+                        <h3>WineQual MLOps</h3>
+                        <p>AWS SageMaker pipeline with drift monitoring and 94.2% accuracy.</p>
+                        <a href="https://github.com/SushP07/WineQual-MLOps" target="_blank" class="btn-link">
+                            <i data-lucide="github"></i> Repository
                         </a>
                     </div>
 
-                    <!-- Project Example: Standard GitHub Link -->
                     <div class="card visible" style="opacity:1; transform:none;">
-                        <h3>Neural Art Style</h3>
-                        <p>Architecture for style transformation between artistic images.</p>
-                        <a href="https://github.com/SushP07/Style-Transfer" target="_blank" class="btn-link">
-                            <i data-lucide="github"></i> View Repo
+                        <h3>BYOL FOD Detection</h3>
+                        <p>CV research surpassing SOTA benchmarks using self-supervised learning.</p>
+                        <a href="https://github.com/SushP07/BYOL-FOD-Detection" target="_blank" class="btn-link">
+                            <i data-lucide="github"></i> Research
                         </a>
                     </div>
                 </div>
@@ -672,6 +670,7 @@
         });
 
         async function typeSequence() {
+            // Reset visibility
             document.querySelectorAll('.skill-card, .log-entry, .card, .badge').forEach(el => el.classList.remove('visible'));
             document.getElementById('avatar').classList.remove('visible');
             document.getElementById('socials').style.opacity = "0";
@@ -687,7 +686,8 @@
             nameEl.appendChild(badge);
             setTimeout(() => badge.classList.add('visible'), 50);
             await new Promise(r => setTimeout(r, 400));
-            await typeText("hero-sub", "Lead-minded Software & Data Engineer at National Grid. Specializing in scalable ML pipelines.", 15);
+            // Updated subheading for GenAI, LLMs, and MLOps focus
+            await typeText("hero-sub", "Lead-minded Software & Data Engineer at National Grid. Architecting Agentic AI, LLM systems, and production-grade MLOps pipelines.", 15);
             document.getElementById('socials').style.opacity = "1";
 
             await typeText("cmd-proj", "ls ./featured-projects", 40);
@@ -724,9 +724,9 @@
             await typeText("content-exp-2", "• Designed scalable ETL pipelines via Azure Functions and PySpark for energy data processing.\n• Integrated anomaly detection and drift monitoring, improving system uptime by 15%.\n• Developed automated Power BI reporting pipelines reducing manual effort by 100%.", 10);
 
             await typeText("cmd-edu", "cat education.txt", 40);
-            document.getElementById('edu-1').classList.add('visible');
+            document.getElementById('user-edu-1').classList.add('visible');
             await typeText("content-edu-1", "• Developed computer vision framework using BYOL for FOD detection. Surpassed SOTA benchmarks with 89.9% accuracy.", 10);
-            document.getElementById('edu-2').classList.add('visible');
+            document.getElementById('user-edu-2').classList.add('visible');
             await typeText("content-edu-2", "• Focused on neural networks, scalable software systems, and distributed data processing.", 10);
 
             document.getElementById('footer').style.opacity = "1";
