@@ -510,17 +510,22 @@
                             <a href="https://github.com/SushP07/blog-generation-app-aws" target="_blank" class="btn-link"><i data-lucide="github"></i> Repository</a>
                         </div>
                         <div class="card" id="proj-3">
-                            <h3>Race Pace Strategy Optimizer</h3>
-                            <p>Predictive analytics engine for F1 race strategy optimization using live telemetry data.</p>
-                            <a href="https://github.com/SushP07/Race-Pace-Predictor-Strategy-Optimizer" target="_blank" class="btn-link"><i data-lucide="github"></i> Repository</a>
+                            <h3>Machine Learning Pipeline v1</h3>
+                            <p>This project demonstrates a robust, production-ready machine learning pipeline designed for reproducibility, scalability, and experiment tracking. It integrates DVC (Data Version Control) for managing large datasets and pipeline orchestration, and MLflow for comprehensive experiment logging and model versioning.</p>
+                            <a href="https://dagshub.com/SushP07/machine_learning_pipeline_v1" target="_blank" class="btn-link"><i data-lucide="database"></i> DagsHub Repository</a>
                         </div>
                         <div class="card" id="proj-4">
                             <h3>Automate Containerization</h3>
                             <p>CLI tool/scripting suite to streamline Docker/K8s deployments for microservices.</p>
                             <a href="https://github.com/SushP07/automate_containerization" target="_blank" class="btn-link"><i data-lucide="github"></i> Repository</a>
                         </div>
+                        <div class="card" id="proj-5">
+                            <h3>Race Pace Strategy Optimizer</h3>
+                            <p>Predictive analytics engine for F1 race strategy optimization using live telemetry data.</p>
+                            <a href="https://github.com/SushP07/Race-Pace-Predictor-Strategy-Optimizer" target="_blank" class="btn-link"><i data-lucide="github"></i> Repository</a>
+                        </div>
                         <!-- INTERACTIVE CARD (PUSHED DOWN) -->
-                        <div class="terminal-card card" id="proj-5">
+                        <div class="terminal-card card" id="proj-6">
                             <span class="label">terminal.exe</span>
                             <div class="prompt-line">
                                 <span>➜</span>
@@ -744,6 +749,8 @@
             document.getElementById('proj-4').classList.add('visible');
             await new Promise(r => setTimeout(r, 120));
             document.getElementById('proj-5').classList.add('visible');
+            await new Promise(r => setTimeout(r, 120));
+            document.getElementById('proj-6').classList.add('visible');
             await new Promise(r => setTimeout(r, 500));
 
             await typeText("cmd-skills", "ls technical-skills/", 40);
@@ -771,9 +778,9 @@
 
             await typeText("cmd-edu", "cat education.txt", 40);
             document.getElementById('user-edu-1').classList.add('visible');
-            await typeText("content-edu-1", "• Developed computer vision framework using BYOL for FOD detection. Surpassed SOTA benchmarks with 89.9% accuracy.", 10);
+            await typeText("content-edu-1", "• Individual Research: Applied Self-Supervised Learning (BYOL) to train a representation backbone model, mitigating dissimilarity between augmented views. Leveraged BYOL to train a ResNet-18 architecture on the FOD-A dataset across 31 classes and 24,000+ runway images, achieving 89.9% classification accuracy (surpassing SOTA benchmarks) and an IoU of 28%.\n• Group Project: Engineered an end-to-end Computer Vision pipeline to detect normal vs. abnormal human gait sequences using CNN-based spatiotemporal modeling, yielding 96.7% accuracy and 94.7% F1-score. Architected a 4-stage pipeline (crowd detection/tracking, pose estimation, gait feature extraction, and classification) evaluated on both synthetic crowd simulations and real-world environments.", 10);
             document.getElementById('user-edu-2').classList.add('visible');
-            await typeText("content-edu-2", "• Focused on neural networks, scalable software systems, and distributed data processing.", 10);
+            await typeText("content-edu-2", "• Published Research Project (\"e-Kids Learn\"): Published in Strad Research (ISSN: 0039-2049, DOI: 10.37896/sr8.5/064) on intelligent e-learning environments combining video conferencing, facial sentiment tracking, and interactive handwriting assessment.\n• Handwriting Recognition Architecture: Architected a hybrid Deep Learning engine combining a 5-layer Convolutional Neural Network (CNN) with a 2-layer Recurrent Neural Network (RNN) to evaluate handwritten words submitted on an interactive whiteboard, achieving baseline accuracies >70% and test-run word recognition accuracies ranging from 79% to 88%.\n• Facial Emotion Recognition & Monitoring: Engineered real-time attention-tracking using Face Emotion Recognition (FER) algorithms (CNN/SVM) to monitor student attentiveness and gaze direction, triggering automated alerts when students looked away and delivering actionable sentiment analytics to instructors.\n• End-to-End System Integration: Built a secure 4-module web platform (Authentication, Role-Based Analytics Dashboard, Protected Video Classroom, and Test/Assessment Engine) providing automated feedback loops to learners and real-time class comprehension analytics to educators.", 10);
 
             document.getElementById('footer').style.opacity = "1";
         }
